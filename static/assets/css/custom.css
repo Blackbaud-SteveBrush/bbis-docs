@@ -1,0 +1,18 @@
+body.full-height-width {
+  background: none;
+  background-size: auto;
+}
+
+.status {
+  background: rgba(0, 0, 0, .1);
+  margin: 10px;
+  padding: 5px;
+}
+
+.status-github-btn {
+  margin-right: 0 10px;
+}
+
+.welcome {
+  background: #333;
+}
