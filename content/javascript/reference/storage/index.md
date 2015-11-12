@@ -1,6 +1,7 @@
 ---
 layout: layout-sidebar
 name: Storage methods
+order: 5
 ---
 
 # Storage Methods

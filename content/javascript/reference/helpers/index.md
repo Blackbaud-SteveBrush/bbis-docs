@@ -1,6 +1,7 @@
 ---
 layout: layout-sidebar
 name: Helper methods
+order: 4
 ---
 
 # Helper Methods
