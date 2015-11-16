@@ -1,8 +1,8 @@
 # =============================================
 # PRODUCT
 # =============================================
-product_name_long: Interactive Services - Web Development Documentation
-product_name_short: Interactive Services
+product_name_long: GMBU Web Development Handbook
+product_name_short: GMBU Web Development Handbook
 title: <%= stache.config.product_name_long %>
 
 omnibar_title: <%= stache.config.product_name_short %>
@@ -15,7 +15,7 @@ files:
   css:
     - /assets/css/custom.css
   js:
-    #- /assets/js/custom.js
+    - /assets/js/custom.js
 
 stache_docs: http://blackbaud-stache.azurewebsites.net/
 stache_docs_docs: <%= stache.config.stache_docs %>docs/
