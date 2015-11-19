@@ -346,108 +346,6 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
 </div>
 
 
-
-## forge post_sortable_columns
-
-<div class="panel panel-reference">
-	<div class="panel-heading">
-		<h4 class="panel-title"><code class="language-php">blackbaud\PostColumns $plugin->forge ( "post_sortable&#95;columns", array $options )</code></h4>
-	</div>
-	<div class="panel-body">
-		<p>Creates sortable columns for the All Posts page. Also works for custom post types.</p>
-		<h3>Parameters</h3>
-		<div class="table-responsive">
-    		<table class="table table-parameters">
-    		    <thead>
-    		        <tr>
-    		            <th>Name</th>
-    		            <th>Type</th>
-    		            <th>Description</th>
-    		        </tr>
-    		    </thead>
-    		    <tbody>
-    				<tr>
-        				<td class="name">options</td>
-    					<td class="type">array</td>
-        				<td>
-            				<ul class="list-group">
-            				    <li class="list-group-item">
-            						<h4 class="list-group-item-heading">post_type</h4>
-            						<p>
-            							<span class="text-muted">Type: string</span><br>
-            							The post type slug
-            						</p>
-            					</li>
-            					<li class="list-group-item">
-            						<h4 class="list-group-item-heading">columns</h4>
-            						<p>
-            							<span class="text-muted">Type: array</span><br>
-            							An array of keyed arrays, one for each column. Each array may have the following properties:
-            							<table class="table table-parameters">
-                                		    <thead>
-                                		        <tr>
-                                		            <th>Name</th>
-                                		            <th>Type</th>
-                                		            <th>Description</th>
-                                		        </tr>
-                                		    </thead>
-                                		    <tbody>
-                                		        <tr>
-                                    				<td class="name">label</td>
-                                					<td class="type">string</td>
-                                    				<td>The column's header label</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">value</td>
-                                					<td class="type">function</td>
-                                    				<td>This function should return the content to be displayed in the column. The function argument `$data` is an array that contains the column information, the post_id, and the post object itself.</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">meta_key</td>
-                                					<td class="type">string</td>
-                                    				<td>If you wish to order the column by a post meta key, provide it here.</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
-            						</p>
-            					</li>
-            				</ul>
-        				</td>
-    				</tr>
-    			</tbody>
-    		</table>
-		</div>
-		<h3>Examples</h3>
-        <h4>Create a sortable column for a custom post type, that displays the post ID:</h4>
-        <pre><code class="language-php">$plugin->forge('post&#95;sortable&#95;columns', array(
-    'post&#95;type' => 'my&#95;post&#95;type',
-    'columns' => array(
-        'my&#95;post&#95;id' => array(
-            'label' => "Post ID",
-            'value' => function ($data) {
-                return $data['post&#95;id'];
-            }
-        )
-    )
-));</code></pre>
-        <h4>Create a sortable column for a post's meta key:</h4>
-        <pre><code class="language-php">$plugin->forge('post&#95;sortable&#95;columns', array(
-    'post&#95;type' => 'post',
-    'columns' => array(
-        'my&#95;post&#95;id' => array(
-            'label' => "Post ID",
-            'value' => function ($data) {
-                return $data['post&#95;id'];
-            }
-        )
-    ),
-    'meta&#95;key' => 'my&#95;meta'
-));</code></pre>
-	</div>
-</div>
-
-
-
 ## forge meta_box
 
 <div class="panel panel-reference">
@@ -560,6 +458,106 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
             )
         )
     )
+));</code></pre>
+	</div>
+</div>
+
+
+## forge post_sortable_columns
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">blackbaud\PostColumns $plugin->forge ( "post_sortable&#95;columns", array $options )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Creates sortable columns for the All Posts page. Also works for custom post types.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+        				<td class="name">options</td>
+    					<td class="type">array</td>
+        				<td>
+            				<ul class="list-group">
+            				    <li class="list-group-item">
+            						<h4 class="list-group-item-heading">post_type</h4>
+            						<p>
+            							<span class="text-muted">Type: string</span><br>
+            							The post type slug
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">columns</h4>
+            						<p>
+            							<span class="text-muted">Type: array</span><br>
+            							An array of keyed arrays, one for each column. Each array may have the following properties:
+            							<table class="table table-parameters">
+                                		    <thead>
+                                		        <tr>
+                                		            <th>Name</th>
+                                		            <th>Type</th>
+                                		            <th>Description</th>
+                                		        </tr>
+                                		    </thead>
+                                		    <tbody>
+                                		        <tr>
+                                    				<td class="name">label</td>
+                                					<td class="type">string</td>
+                                    				<td>The column's header label</td>
+                                				</tr>
+                                				<tr>
+                                    				<td class="name">value</td>
+                                					<td class="type">function</td>
+                                    				<td>This function should return the content to be displayed in the column. The function argument `$data` is an array that contains the column information, the post_id, and the post object itself.</td>
+                                				</tr>
+                                				<tr>
+                                    				<td class="name">meta_key</td>
+                                					<td class="type">string</td>
+                                    				<td>If you wish to order the column by a post meta key, provide it here.</td>
+                                				</tr>
+                                			</tbody>
+                                		</table>
+            						</p>
+            					</li>
+            				</ul>
+        				</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Create a sortable column for a custom post type, that displays the post ID:</h4>
+        <pre><code class="language-php">$plugin->forge('post&#95;sortable&#95;columns', array(
+    'post&#95;type' => 'my&#95;post&#95;type',
+    'columns' => array(
+        'my&#95;post&#95;id' => array(
+            'label' => "Post ID",
+            'value' => function ($data) {
+                return $data['post&#95;id'];
+            }
+        )
+    )
+));</code></pre>
+        <h4>Create a sortable column for a post's meta key:</h4>
+        <pre><code class="language-php">$plugin->forge('post&#95;sortable&#95;columns', array(
+    'post&#95;type' => 'post',
+    'columns' => array(
+        'my&#95;post&#95;id' => array(
+            'label' => "Post ID",
+            'value' => function ($data) {
+                return $data['post&#95;id'];
+            }
+        )
+    ),
+    'meta&#95;key' => 'my&#95;meta'
 ));</code></pre>
 	</div>
 </div>
@@ -929,7 +927,7 @@ $plugin->forge("shortcode", array(
 		<h4 class="panel-title"><code class="language-php">blackbaud\Updater $plugin->forge ( "updater", array $options )</code></h4>
 	</div>
 	<div class="panel-body">
-		<p>Description...</p>
+		<p>Forging the updater will link your plugin to the auto-update service. Of course, your plugin will need to be included in the updater's package.json file to be fully enabled.</p>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">
@@ -945,13 +943,19 @@ $plugin->forge("shortcode", array(
         				<td class="name">options</td>
     					<td class="type">array</td>
         				<td>
-            				<p>Description...</p>
             				<ul class="list-group">
             				    <li class="list-group-item">
-            						<h4 class="list-group-item-heading">slug</h4>
+            						<h4 class="list-group-item-heading">always&#95;check</h4>
+            						<p>
+            							<span class="text-muted">Type: boolean</span><br>
+            							Set this property to `true` to force WordPress to check if there's an update on every page refresh.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">endpoint</h4>
             						<p>
             							<span class="text-muted">Type: string</span><br>
-            							Description...
+            							The URL endpoint for the updater API.
             						</p>
             					</li>
             				</ul>
@@ -961,8 +965,7 @@ $plugin->forge("shortcode", array(
     		</table>
 		</div>
 		<h3>Examples</h3>
-        <h4>Description...</h4>
-        <pre><code class="language-php"></code></pre>
+        <pre><code class="language-php">$plugin->forge("updater");</code></pre>
 	</div>
 </div>
 
@@ -1051,7 +1054,7 @@ $plugin->forge("shortcode", array(
 		<h4 class="panel-title"><code class="language-php">string $plugin->get&#95;template ( string $file_name, array $data )</code></h4>
 	</div>
 	<div class="panel-body">
-		<p>Description...</p>
+		<p>This method retrieves the contents of a given file. It will first look in the active theme's template/ directory for a file of the same name. If the file is not found in the theme, the default file in the plugin is used. This way, other developers may overwrite the plugin's HTML partials to fit their project's specific needs.</p>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">
@@ -1067,7 +1070,6 @@ $plugin->forge("shortcode", array(
         				<td class="name">options</td>
     					<td class="type">array</td>
         				<td>
-            				<p>Description...</p>
             				<ul class="list-group">
             				    <li class="list-group-item">
             						<h4 class="list-group-item-heading">file_name</h4>
@@ -1077,7 +1079,7 @@ $plugin->forge("shortcode", array(
             						</p>
             					</li>
             					<li class="list-group-item">
-            						<h4 class="list-group-item-heading">data</h4>
+            						<h4 class="list-group-item-heading">data (optional)</h4>
             						<p>
             							<span class="text-muted">Type: array</span><br>
             							An array of data that can be used in the file to print dynamic content.
@@ -1090,8 +1092,10 @@ $plugin->forge("shortcode", array(
     		</table>
 		</div>
 		<h3>Examples</h3>
-        <h4>Description...</h4>
-        <pre><code class="language-php"></code></pre>
+        <h4>templates/my-partial.php</h4>
+        <pre><code class="language-markup">Hello, &lt;?php echo $data['name']; ?>!</code></pre>
+        <h4>In your plugin's main PHP file:</h4>
+        <pre><code class="language-php">echo $plugin->get_template('my-partial.php', array('name' => 'World')); // prints "Hello, World!"</code></pre>
 	</div>
 </div>
 
@@ -1131,10 +1135,10 @@ $my&#95;module = $plugin->last&#95;module;</code></pre>
 
 <div class="panel panel-reference">
 	<div class="panel-heading">
-		<h4 class="panel-title"><code class="language-php">blackbaud\Module $plugin->module ( string $name, array $options )</code></h4>
+		<h4 class="panel-title"><code class="language-php">blackbaud\Module $plugin->module ( string $name, array $features )</code></h4>
 	</div>
 	<div class="panel-body">
-		<p>Description...</p>
+		<p>A "module" let's you produce additional functionality to be used by your plugin, while keeping them wrapped in the Assistant's namespace.</p>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">
@@ -1147,27 +1151,30 @@ $my&#95;module = $plugin->last&#95;module;</code></pre>
     		    </thead>
     		    <tbody>
     				<tr>
-        				<td class="name">options</td>
+        				<td class="name">slug</td>
+    					<td class="type">string</td>
+        				<td>A unique name for your module. No spaces or special characters beyond dashes and underscores.</td>
+    				</tr>
+    				<tr>
+        				<td class="name">features</td>
     					<td class="type">array</td>
-        				<td>
-            				<p>Description...</p>
-            				<ul class="list-group">
-            				    <li class="list-group-item">
-            						<h4 class="list-group-item-heading">slug</h4>
-            						<p>
-            							<span class="text-muted">Type: string</span><br>
-            							Description...
-            						</p>
-            					</li>
-            				</ul>
-        				</td>
+        				<td>This array can include properties and or functions. A function receives any attributes you wish, followed by an object that represents the module itself. See the examples below.</td>
     				</tr>
     			</tbody>
     		</table>
 		</div>
 		<h3>Examples</h3>
-        <h4>Description...</h4>
-        <pre><code class="language-php"></code></pre>
+        <h4>The following module includes private properties and methods.</h4>
+        <pre><code class="language-php">$plugin->module("MyModule", array(
+    "my_property" => 15,
+    "my_function" => function ($attr1, $module) {
+        echo $module->my_property + $attr1;
+    }
+));</code></pre>
+        <h4>Then, to use the module, do the following:</h4>
+        <pre><code class="language-php">$my_module = $plugin->module("MyModule");
+
+echo $my&#95;module->my&#95;function(5); // prints '20'</code></pre>
 	</div>
 </div>
 
