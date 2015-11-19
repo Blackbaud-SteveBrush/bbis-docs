@@ -20,6 +20,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 .panel-reference {
     border: 0;
+    box-shadow: none;
 }
     .panel-reference > .panel-heading {
         margin: 0 0 15px;
@@ -83,6 +84,26 @@ h1, .h1, h2, .h2, h3, .h3 {
         color: #888;
         font-style: italic;
     }
+    .table-parameters .list-group {
+        border-top: 1px solid #ddd;
+        margin: 0;
+    }
+        .table-parameters .list-group > li {
+            border: 0;
+            border-radius: 0;
+            background: #f5f2f0;
+            padding: 10px 15px 15px;
+            margin: 0 0 2px;
+        }
+        .table-parameters .list-group h4 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .table-parameters .list-group p {
+            margin: 0;
+        }
 
 .status {
   background: rgba(0, 0, 0, .1);
@@ -144,7 +165,7 @@ pre,
 pre[class*="language-"],
 code[class*="language-"] {
     font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
