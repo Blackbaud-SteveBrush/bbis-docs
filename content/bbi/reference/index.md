@@ -1,5 +1,5 @@
 ---
-layout: layout-sidebar
+layout: layout-showcase
 order: 3
 name: API Reference
 description: Description here.

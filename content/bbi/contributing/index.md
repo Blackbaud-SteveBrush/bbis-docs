@@ -51,7 +51,7 @@ To make an update to an existing version of BBI, you'll need to fork the reposit
 1. Copy the code from the compiler and paste it into the bbi.min.js file.
 1. Open Terminal and commit your changes to your fork.
 1. Next, you'll need to <a href="https://help.github.com/articles/creating-a-pull-request/" target="_blank">issue a pull request</a> at GitHub.com.
-1. Once the pull request has been approved and merged into the master branch, you'll need to pull the changes into the api.blackbaud.com domain.
+1. Once the pull request has been approved and merged into the master branch, the api.blackbaud.com administrator will need to pull the changes onto the server. (If you are not an administrator, ignore the remaining steps.)
 1. Open Terminal and type `ssh root@api.blackbaud.com`. You'll be asked for the password.
 1. Next, type `api`, which is an alias for a specific directory.
 1. Finally, type `git pull` and wait for all the changes to be migrated from GitHub into api.blackbaud.com.
