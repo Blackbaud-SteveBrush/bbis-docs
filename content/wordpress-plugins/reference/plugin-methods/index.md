@@ -927,7 +927,7 @@ $plugin->forge("shortcode", array(
 		<h4 class="panel-title"><code class="language-php">blackbaud\Updater $plugin->forge ( "updater", array $options )</code></h4>
 	</div>
 	<div class="panel-body">
-		<p>Forging the updater will link your plugin to the auto-update service. Of course, your plugin will need to be included in the updater's package.json file to be fully enabled.</p>
+		<p>Forging an Updater will link your plugin to Blackbaud's auto-update service. Of course, your plugin will need to be included in the updater's package.json file to be fully enabled. Learn more about Blackbaud's <a href="../../updater">Theme and Plugin Updater</a>.</p>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">

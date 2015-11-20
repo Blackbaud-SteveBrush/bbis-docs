@@ -109,6 +109,83 @@ BBI.defaults("debug", true);</code></pre>
 	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
+## extension
+
+The namespace consists of several extensions. Each extension has a specific purpose. For example, the "helper" methods are contained in an extension named "helper".
+
+<p class="alert alert-info">Extensions can only be created in BBI's initialization cycle. In other words, you cannot add an extension to BBI inside one of your actions. To learn more about extensions and how they're built, go to the Contributing section.</p>
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-javascript">BBI.extension ( Object args )</code></h4>
+	</div>
+	<div class="panel-body">
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">args</td>
+    					<td class="type">Object</td>
+    					<td>
+            				<ul class="list-group">
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">alias</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							A unique string to designate your extension. Avoid spaces and special characters.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">defaults</h4>
+            						<p>
+            							<span class="text-muted">Type: Object</span><br>
+            							Any defaults you wish to use in your directive
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">directive</h4>
+            						<p>
+            							<span class="text-muted">Type: Function</span><br>
+            							A function describing what this directive does, and what it returns to be used publicly. This function receives attributes for the extension itself, a reference to BBI, and a reference to jQuery.
+            						</p>
+            					</li>
+            				</ul>
+        				</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Create a new extension named "myExtension":</h4>
+        <pre><code class="language-javascript">(function () {
+            
+    BBI.extension({
+        alias: "myExtension",
+        defaults: {
+            foo: "bar"
+        },
+        directive: function (ext, bbi, $) {
+            var settings = ext.settings();
+            return {
+                getFoo: function () {
+                    return settings.foo;
+                }
+            };
+        }
+    });
+            
+}());</code></pre>
+	</div>
+</div>
+
 ## .info()
 <div id="method-info" class="panel-wrapper">
 	<div class="panel panel-primary">
@@ -235,6 +312,74 @@ BBI.defaults("debug", true);</code></pre>
 		</div>
 	</div>
 	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
+</div>
+
+## instantiate
+
+After you've written an extension, you'll need to instantiate it so that BBI can use it.
+
+<p class="alert alert-info">You cannot instantiate an extension after BBI has been initialized. To learn more about extensions, go to the Contributing section.</p>
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-javascript">BBI.instantiate ( String alias, Object options )</code></h4>
+	</div>
+	<div class="panel-body">
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    		        <tr>
+    					<td class="name">alias</td>
+    					<td class="type">String</td>
+    					<td>The alias of the directive you wish to instantiate</td>
+    				</tr>
+    				<tr>
+    					<td class="name">options</td>
+    					<td class="type">Object</td>
+    					<td>Any options you wish to push to the directive. The options will be merged with the defaults, producing the directive's settings. To allow a developer to configure an extension outside of BBI, you can use the options object passed via <a href="#">BBI.init()</a>. To do this, simply instantiate the extension with the <a href="#">BBI.options()</a> method (see example below).</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Create an extension named "myExtension" and instantiate it:</h4>
+        <pre><code class="language-javascript">(function () {
+            
+    BBI.extension({
+        alias: "myExtension",
+        defaults: {
+            foo: "bar"
+        },
+        directive: function (ext, bbi, $) {
+            var settings = ext.settings();
+            return {
+                getFoo: function () {
+                    return settings.foo;
+                }
+            };
+        }
+    });
+    
+    BBI.instantiate("myExtension", BBI.options());
+            
+}());</code></pre>
+        <h4>Then, developers outside of BBI can configure your extension via:</h4>
+        <pre><code class="language-javascript">(function () {
+            
+    BBI.init({
+        foo: "baz" // pass in a different value
+    });
+            
+}());</code></pre>
+	</div>
 </div>
 
 ## .isAdminView()
@@ -443,6 +588,83 @@ BBI.map("myData", {
 BBI.myData.first; // produces, "Jayne"
 </code></pre>
 		</div>
+	</div>
+</div>
+
+## on
+
+This method allows you to insert code at specific points during BBI's initialization cycle.
+
+<p class="alert alert-info">This method may only be used during BBI's initialization cycle, specifically when dealing with extensions. To learn more about extensions and how they're built, go to the Contributing section.</p>
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-javascript">BBI.on ( String hook, Function callback )</code></h4>
+	</div>
+	<div class="panel-body">
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">hook</td>
+    					<td class="type">String</td>
+    					<td>
+    					    The hook attribute can be one of the following:
+            				<ul class="list-group">
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">preload</h4>
+            						<p>
+            							Fires before jQuery is implemented and before any extension has been instantiated.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">init</h4>
+            						<p>
+            							Fires after jQuery is implemented. BBI.init is executed, and all extensions are instantiated here. If you are adding a new extension, this is where your extension should be instantiated.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">complete</h4>
+            						<p>
+            							All extensions have been instantiated. Use this hook to perform any clean-up before any BBI applications are called.
+            						</p>
+            					</li>
+            				</ul>
+        				</td>
+    				</tr>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>This function is executed at a specific time during BBI's initialization cycle. It receives a reference to BBI.</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>A demonstration of each hook:</h4>
+        <pre><code class="language-javascript">(function () {
+            
+    BBI.on("preload", function (bbi) {
+        // Extensions have not been instantiated
+    });
+    
+    BBI.on("init", function (bbi) {
+        // Extensions are being instantiated
+    });
+    
+    BBI.on("complete", function (bbi) {
+        // Extensions have been instantiated
+    });
+            
+}());</code></pre>
 	</div>
 </div>
 
