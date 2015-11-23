@@ -5,6 +5,8 @@ name: Flyer
 
 # Flyer
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-flyer.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-flyer.zip</a>
+
 ## What it does
 
 The Flyer plugin creates the HTML (and CSS/JS) necessary for a fully-functional Twitter Boostrap Modals (or popups). Flyers are added to the page in the form of shortcodes.
@@ -27,8 +29,6 @@ The Flyer plugin creates the HTML (and CSS/JS) necessary for a fully-functional 
     - Custom HTML
 
 ## How to install
-
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-flyer.zip</a>
 
 ### Installing via FTP
 

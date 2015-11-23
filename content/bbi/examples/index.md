@@ -1,6 +1,6 @@
 ---
 layout: layout-sidebar
-order: 4
+order: 6
 name: Examples
 description: Description here.
 icon: fa fa-sitemap

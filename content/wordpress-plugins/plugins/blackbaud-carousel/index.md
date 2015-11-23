@@ -5,6 +5,8 @@ name: Carousel
 
 # Carousel
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-carousel.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-carousel.zip</a>
+
 ## What it does
 
 The Carousel plugin creates the HTML necessary for a fully-functional Twitter Boostrap Carousel. Carousels are added to the page in the form of shortcodes.
@@ -37,8 +39,6 @@ The Carousel plugin creates the HTML necessary for a fully-functional Twitter Bo
     - Custom HTML after the slide
 
 ## How to install
-
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-carousel.zip</a>
 
 ### Installing via FTP
 

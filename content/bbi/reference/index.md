@@ -1,11 +1,11 @@
 ---
 layout: layout-showcase
-order: 3
-name: API Reference
+order: 5
+name: Technical Reference
 description: Description here.
 icon: fa fa-sitemap
 ---
 
-# API Reference
+# Technical Reference
 
 <p class="lead">Options and examples for BBI Core, Helpers, and Apps</p>

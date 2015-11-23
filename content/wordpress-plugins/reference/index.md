@@ -1,13 +1,13 @@
 ---
 layout: layout-sidebar
 order: 3
-name: API Reference
+name: Technical Reference
 description: Description here.
 icon: fa fa-sitemap
 ---
 
 <div class="page-header">
-    <h1>API Reference</h1>
+    <h1>Technical Reference</h1>
 </div>
 
 <h4><a href="assistant-methods/">Assistant Methods & Properties</a></h4>

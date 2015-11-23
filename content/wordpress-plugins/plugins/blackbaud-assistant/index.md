@@ -6,6 +6,8 @@ order: 1
 
 # Plugin Assistant
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-assistant.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-assistant.zip</a>
+
 ## What it does
 
 While the Plugin Assistant is technically a WordPress plugin, it doesn't really do much by itself. It's more or less a collection of methods that all of Blackbaud's official plugins use.

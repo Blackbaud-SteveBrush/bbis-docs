@@ -1,12 +1,12 @@
 ---
 layout: layout-sidebar
-order: 2
+order: 4
 name: Writing Actions
 description: Description here.
 icon: fa fa-sitemap
 ---
 
-# Writing actions
+# Writing Actions
 
 ## Overview
 
@@ -21,13 +21,13 @@ icon: fa fa-sitemap
     <li>Any number of actions can be added to your Application's file</li>
 </ol>
 
-[API reference for action&nbsp;&rarr;](/javascript/api-reference/)
+[API reference for action&nbsp;&rarr;](/bbi/reference/app-methods/#action)
 
 ___
 
 ## Structure
 
-<p class="alert alert-info">[Browse the examples](/javascript/examples/) before writing your customization. You may find some code you can borrow for your project.</p>
+<p class="alert alert-info">[Browse the examples](/bbi/examples/) before writing your customization. You may find some code you can borrow for your project.</p>
 
 If you cannot find an example application that meets your needs, you'll need to roll up your sleeves and write one from scratch.
 
@@ -81,7 +81,7 @@ Insert on the page, wherever you want your customization to take effect:
 			<p><strong>`data-*`</strong><br>
 			Value: any string<br>
 			You can pass options to your actions using custom HTML5 data attributes. For example, if you wanted to pass an option named <code>appId</code> with a value of "45", you would add the data attribute <code>data-app-id="45"</code> to the tag (the data attributes use spinal-case and are converted to camel-case when received by the application).</p>
-			<p><a href="#">Read more about passing options to your actions on the Methods page&nbsp;&rarr;</a></p>
+			<p><a href="/bbi/reference/app-methods/#action">Read more about passing options to your actions&nbsp;&rarr;</a></p>
 		</td>
 	</tr>
 </table>
@@ -90,6 +90,6 @@ Insert on the page, wherever you want your customization to take effect:
 
 Sometimes, your actions are best initialized in an external script somewhere, instead of using data attributes in the markup.
 
-<pre><code class="language-javascript">jQuery(document).on('bbi-loaded', function (e, BBI, $) {
-    BBI.apps().MyApp.actions.sayHello.init(args);
+<pre><code class="language-javascript">jQuery(document).on('bbi-loaded', function (e, bbi, $) {
+    bbi.apps().MyApp.actions.sayHello.init(args);
 });</code></pre>

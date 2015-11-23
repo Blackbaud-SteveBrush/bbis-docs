@@ -4,8 +4,10 @@ name: Plugin
 ---
 
 <div class="page-header">
-    <h1>Plugin Methods & Properties</h1>
+    <h1>blackbaud\Plugin `$plugin`</h1>
 </div>
+
+When you create a plugin using the Plugin Assistant, you are also creating an object within the "blackbaud" namespace. The plugin object is represented as the local variable `$plugin`. All of the following methods belong to this object.
 
 ## expose_setting
 
@@ -286,10 +288,11 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
 
 <div class="panel panel-reference">
 	<div class="panel-heading">
-		<h4 class="panel-title"><code class="language-php">blackbaud\Asset $plugin->forge ( "custom_post&#95;type", array $options )</code></h4>
+		<h4 class="panel-title"><code class="language-php">blackbaud\CustomPostType $plugin->forge ( "custom_post&#95;type", array $options )</code></h4>
 	</div>
 	<div class="panel-body">
 		<p>Registers a WordPress custom post type.</p>
+		<p>Returns an object representing that post type.</p>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">
@@ -328,11 +331,11 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
 		</div>
 		<h3>Examples</h3>
         <h4>Register a simple post type:</h4>
-        <pre><code class="language-php">$plugin->forge("custom_post_type", array(
+        <pre><code class="language-php">$plugin->forge("custom&#95;post&#95;type", array(
     "slug" => "my_cpt"
 ));</code></pre>
         <h4>Register an advanced post type:</h4>
-        <pre><code class="language-php">$plugin->forge("custom_post_type", array(
+        <pre><code class="language-php">$plugin->forge("custom&#95;post&#95;type", array(
     "slug" => "my_cpt",
     "description" => "An advanced custom post type.",
     "supports" => array("title","editor"),
@@ -446,9 +449,9 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
 		<h3>Examples</h3>
         <h4>Create a meta box for a post with one text box:</h4>
         <pre><code class="language-php">$plugin->forge("meta_box", array(
-    "slug"   => "my_meta&#95;box",
-    "label"  => "My Meta Box",
-    "fields" => array(
+    "post&#95;type" => "my&#95;meta&#95;box",
+    "label"     => "My Meta Box",
+    "fields"    => array(
         array(
             "slug"       => "my_field",
             "label"      => "My Field:",
@@ -969,50 +972,6 @@ $plugin->forge("shortcode", array(
 	</div>
 </div>
 
-## forged
-
-<div class="panel panel-reference">
-	<div class="panel-heading">
-		<h4 class="panel-title"><code class="language-php">blackbaud\Object $plugin->forged ( string $type )</code></h4>
-	</div>
-	<div class="panel-body">
-		<p>Returns all objects instantiated by the `forge` method, by type.</p>
-		<h3>Parameters</h3>
-		<div class="table-responsive">
-    		<table class="table table-parameters">
-    		    <thead>
-    		        <tr>
-    		            <th>Name</th>
-    		            <th>Type</th>
-    		            <th>Description</th>
-    		        </tr>
-    		    </thead>
-    		    <tbody>
-    				<tr>
-        				<td class="name">options</td>
-    					<td class="type">array</td>
-        				<td>
-            				<p>Description...</p>
-            				<ul class="list-group">
-            				    <li class="list-group-item">
-            						<h4 class="list-group-item-heading">type</h4>
-            						<p>
-            							<span class="text-muted">Type: string</span><br>
-            							Any normal slug you would enter into the `forge` method (e.g., "custom&#95;post&#95;type", "settings&#95;page", "shortcode", etc.).
-            						</p>
-            					</li>
-            				</ul>
-        				</td>
-    				</tr>
-    			</tbody>
-    		</table>
-		</div>
-		<h3>Examples</h3>
-        <h4>Get all custom post types created by the forge:</h4>
-        <pre><code class="language-php">$cpts = $plugin->forged("custom&#95;post&#95;type");</code></pre>
-	</div>
-</div>
-
 
 ## get
 
@@ -1043,6 +1002,61 @@ $plugin->forge("shortcode", array(
 		</div>
 		<h3>Examples</h3>
         <pre><code class="language-php">$val = $plugin->get("alias");</code></pre>
+	</div>
+</div>
+
+
+## get_forged
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">blackbaud\Object $plugin->get_forged ( string $type, string $slug)</code></h4>
+	</div>
+	<div class="panel-body">
+	    <p>Returns a specific object instantiated by the `forge` method.</p>
+		<p>If `$slug` is omitted, returns all objects instantiated by the `forge` method, by type.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+        				<td class="name">options</td>
+    					<td class="type">array</td>
+        				<td>
+            				<p>Description...</p>
+            				<ul class="list-group">
+            				    <li class="list-group-item">
+            						<h4 class="list-group-item-heading">type</h4>
+            						<p>
+            							<span class="text-muted">Type: string</span><br>
+            							Any normal type you would enter into the `forge` method (e.g., "custom&#95;post&#95;type", "settings&#95;page", "shortcode", etc.).
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">slug (optional)</h4>
+            						<p>
+            							<span class="text-muted">Type: string</span><br>
+            							The specific slug entered for a specific type, such as "my&#95;cpt", or "my&#95;settings&#95;page". Also note that some objects do not require a slug property; if you need to retrieve one of those objects using `get_forged`, simply provide a slug in the `forge` options.
+            						</p>
+            					</li>
+            				</ul>
+        				</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Get all custom post type objects created by the forge:</h4>
+        <pre><code class="language-php">$cpts = $plugin->get&#95;forged("custom&#95;post&#95;type");</code></pre>
+        <h4>Get a specific custom post type object created by the forge:</h4>
+        <pre><code class="language-php">$cpt = $plugin->get&#95;forged("custom&#95;post&#95;type", "my&#95;cpt");</code></pre>
 	</div>
 </div>
 

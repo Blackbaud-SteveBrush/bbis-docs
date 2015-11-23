@@ -5,6 +5,8 @@ name: eTapestry Form
 
 # eTapestry Form
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-etap-form.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-etap-form.zip</a>
+
 ## What it does
 
 The eTapestry Form plugin adds eTapestry DIY iFrame forms to your WordPress site. eTapestry Forms are added to the page in the form of shortcodes.
@@ -16,8 +18,6 @@ The eTapestry Form plugin adds eTapestry DIY iFrame forms to your WordPress site
 - Auto-updates the height of the iframe, to avoid scrollbars
 
 ## How to install
-
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-etap-form.zip</a>
 
 ### Installing via FTP
 

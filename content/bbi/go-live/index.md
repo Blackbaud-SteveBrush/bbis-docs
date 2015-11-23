@@ -1,7 +1,7 @@
 ---
 layout: layout-sidebar
-order: 3
-name: Quality Assurance and Go-live
+order: 8
+name: Quality Assurance & Go-live
 description: Description here.
 icon: fa fa-sitemap
 ---

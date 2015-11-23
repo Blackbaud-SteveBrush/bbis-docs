@@ -5,6 +5,8 @@ name: Luminate Survey
 
 # Luminate Survey
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-luminate-survey.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-luminate-survey.zip</a>
+
 ## What it does
 
 The Luminate Survey plugin adds API Survey forms to your WordPress site. Luminate Forms are added to the page in the form of shortcodes.
@@ -15,8 +17,6 @@ The Luminate Survey plugin adds API Survey forms to your WordPress site. Luminat
 - Editor button to allow you to easily add a form to your posts and pages
 
 ## How to install
-
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-luminate-survey.zip</a>
 
 ### Installing via FTP
 
@@ -75,11 +75,11 @@ There is one template used by this plugin, which can be overwritten in your them
 	    </thead>
 	    <tbody>
 			<tr>
-				<td class="file">survey.blackbaud-flyer.php</td>
-				<td>Contains the HTML needed to call a BBI Application</td>
+				<td class="file">survey-init.blackbaud-flyer.php</td>
+				<td>Contains the HTML needed to call the BBI Application</td>
 			</tr>
 			<tr>
-				<td class="file">survey.hbs</td>
+				<td class="file">survey.blackbaud-flyer.hbs</td>
 				<td>Contains a Handlebars template for the survey's HTML</td>
 			</tr>
 		</tbody>

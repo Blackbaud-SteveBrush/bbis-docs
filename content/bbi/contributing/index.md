@@ -1,6 +1,6 @@
 ---
 layout: layout-sidebar
-order: 6
+order: 9
 name: Contributing
 description: Description here.
 icon: fa fa-sitemap

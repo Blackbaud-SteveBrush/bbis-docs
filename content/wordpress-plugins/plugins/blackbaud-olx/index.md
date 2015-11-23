@@ -17,7 +17,7 @@ The Online Express Forms plugin makes it easy to catalog your various embed code
 
 ## How to install
 
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-olx.zip</a>
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-olx.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-olx.zip</a>
 
 ### Installing via FTP
 
@@ -51,3 +51,30 @@ The Online Express Forms plugin makes it easy to catalog your various embed code
 1. Next, click on the Content Area's "OLX" editor button and select a form from the dropdown.
 1. You should now see a <a href="https://en.support.wordpress.com/shortcodes/" target="_blank">WordPress Shortcode</a> in the Content Area representing your Online Express Form.
 1. Save the post/page and preview it, making sure that the form appears correctly.
+
+### How to overwrite the HTML used for the social sharing popup
+
+These are the templates used by this plugin, which can be overwritten in your theme. To do so, you will need to duplicate the desired file from the plugin's "template" directory, and move it to your theme's "template" directory (if your theme doesn't have a "templates" directory, you'll need to create one).
+
+#### Templates:
+
+<div class="table-responsive">
+	<table class="table table-parameters">
+	    <thead>
+	        <tr>
+	            <th>File</th>
+	            <th>Description</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+			<tr>
+				<td class="file">app-data-attributes.blackbaud-olx.php</td>
+				<td>Contains the HTML needed to call the BBI Application</td>
+			</tr>
+			<tr>
+				<td class="file">sharing-modal.blackbaud-olx.hbs</td>
+				<td>Contains a Handlebars template for the social sharing popup HTML</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

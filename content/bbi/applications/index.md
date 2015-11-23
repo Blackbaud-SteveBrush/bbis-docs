@@ -1,6 +1,6 @@
 ---
 layout: layout-sidebar
-order: 1
+order: 3
 name: Writing an Application
 description: Description here.
 icon: fa fa-sitemap
@@ -13,7 +13,7 @@ BBI operates by itself just fine, and has many methods that can be used out-of-t
 
 Applications operate as separate JavaScript files, and you can have as many applications as you wish on a single page.
 
-<div class="alert alert-info">Want to skip all the mumbo-jumbo? You can head over to the <a href="/javascript/examples/#hello-world">"Hello, World" demo on the Examples page</a>.</div>
+<div class="alert alert-info">Want to skip all the mumbo-jumbo? You can head over to the <a href="/bbi/examples/">"Hello, World" demo on the Examples page</a>.</div>
 
 ## Download the boilerplate
 
@@ -36,9 +36,9 @@ Name your JavaScript file according to this convention: <code>bbi-[app-alias].js
 <ol>
     <li>Open your application JavaScript file in your favorite code editor. You'll notice that the boilerplate is divided into three sections: <code>.register()</code>, <code>.action()</code>, and <code>.build()</code>.</li>
         <ul>
-            <li>The <a href="#">**register**</a> method accepts an options object, which creates and returns the application.  The properties "alias" and "author" are required.</li>
-            <li>The <a href="#">**action**</a> method lets your application do stuff. You can have any number of actions in your application.</li>
-            <li>The <a href="#">**build**</a> method tells BBI that your application is ready to be processed.</li>
+            <li>The <a href="/bbi/reference/bbi-methods/#register">**register**</a> method accepts an options object, which creates and returns the application.  The properties "alias" and "author" are required.</li>
+            <li>The <a href="/bbi/reference/app-methods/#action">**action**</a> method lets your application do stuff. You can have any number of actions in your application.</li>
+            <li>The <a href="/bbi/reference/app-methods/#build">**build**</a> method tells BBI that your application is ready to be processed.</li>
         </ul>
     </li>
     <li>In the <code>.register()</code> method, modify <code>alias: "MyApp"</code> to represent the name of the organization, without spaces, like this: "CancerResearchSociety".</li>

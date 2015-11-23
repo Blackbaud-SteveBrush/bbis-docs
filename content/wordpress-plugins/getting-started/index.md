@@ -8,6 +8,8 @@ icon: fa fa-sitemap
 
 # Getting Started
 
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-assistant.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-assistant.zip</a>
+
 ## Dependencies
 
 - PHP version 5.3.0 or greater
@@ -15,8 +17,6 @@ icon: fa fa-sitemap
 - FTP or WordPress admin credentials
 
 ## Installing the Plugin Assistant
-
-<a href="#" target="_blank" class="btn btn-primary">Download blackbaud-assistant.zip</a>
 
 ### Installing via FTP
 

@@ -4,10 +4,46 @@ name: Assistant
 ---
 
 <div class="page-header">
-    <h1>Assistant Methods & Properties</h1>
+    <h1>Plugin Assistant `$blackbaud`</h1>
 </div>
 
 The Plugin Assistant is represented as the global object `$blackbaud`. All of the following methods belong to this object and can be used within your plugins.
+
+## do_shortcode
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+		    <code class="language-php">string $blackbaud->do&#95;shortcode ( string $post_content )</code>
+		 </h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns the $post_content after its shortcodes have been processed. This is the same as WordPress's own `do_shortcode` method, only this method also enqueue's any assets that are required for it to operate.</p>
+		<p>For example, if you forged an asset that should only appear for a certain shortcode (i.e., `for_shortcode="my_shortcode"`), those assets would not be included in a standard WordPress do_shortcode. The shortcode would create the appropriate HTML, but any CSS/JS associated with the shortcode would not be included. `$blackbaud->do_shortcode` was designed to handle this requirement.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">post_content</td>
+    					<td class="type">string</td>
+    					<td>The WordPress Post content, generally derived in the Loop.</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+		<h4>Look for a shortcode in the Post content and automatically enqueu any required assets:</h4>
+        <pre><code class="language-php">echo $blackbaud->do&#95;shortcode(get&#95;the&#95;content());</code></pre>
+	</div>
+</div>
 
 ## get_settings_field
 

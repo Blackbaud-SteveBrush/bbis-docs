@@ -1,3 +1,3 @@
-# stache-boilerplate
+# bbis-docs
 
-
+Blackbaud Interactive Services Web Development Documentation

@@ -1,6 +1,6 @@
 ---
 layout: layout-sidebar
-order: 5
+order: 7
 name: Tips & Tricks
 description: Description here.
 icon: fa fa-sitemap
