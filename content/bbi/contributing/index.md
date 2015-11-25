@@ -10,7 +10,7 @@ icon: fa fa-sitemap
 
 ## How BBI is built
 
-The BBI object exists as a public property of the browser's Window object. From there, BBI provided many public methods and properties, which are described in detail in the <a href="../../reference/">API Reference</a>.
+The BBI object exists as a public property of the browser's Window object. From there, BBI provided many public methods and properties, which are described in detail on the <a href="/bbi/reference/bbi-methods/">BBI Methods</a> page.
 
 Most of these public methods and properties live separately in what are called "extensions". Extensions are separate chunks of code that isolate similar functionality and ease development and debugging.
 
@@ -21,9 +21,11 @@ The namespace consists of several extensions. Each extension has a specific purp
 
 Extensions are first "described" in what's called a directive. The directive holds functions and properties, and determines what is made public to other extensions. Extensions may only be created and instantiated in the "init" hook (see below).
 
+<a href="/bbi/reference/bbi-methods/#extension">Read more about extensions&nbsp;&rarr;</a>
+
 ## Hooks
 
-The BBI object changes its form many times through its initialization cycle. Different methods are also made available during each cycle, which is why it's important to extend BBI's functionality at the appropriate time. Because of this, certain hooks were developed to allow code to be inserted at each cycle. You can tap into a certain point in the initialization cycle using the `BBI.on()` method.
+The BBI object changes its form many times through its initialization cycle. Different methods are also made available during each cycle, which is why it's important to extend BBI's functionality at the appropriate time. Because of this, certain hooks were developed to allow code to be inserted at each cycle. You can tap into a certain point in the initialization cycle using the <a href="/bbi/reference/bbi-methods/#on">BBI.on</a> method.
 
 ## GitHub workflow
 

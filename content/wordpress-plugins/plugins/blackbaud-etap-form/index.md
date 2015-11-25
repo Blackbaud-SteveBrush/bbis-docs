@@ -1,11 +1,15 @@
 ---
 layout: layout-sidebar
 name: eTapestry Form
+icon: fa fa-file-text
+description: No-scrollbar iFrames for your DIY forms
 ---
 
 # eTapestry Form
 
-<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-etap-form.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-etap-form.zip</a>
+<p class="alert alert-warning">
+    <span class="label label-warning">Note:</span> This plugin requires the Plugin Assistant! Please <a href="/wordpress-plugins/plugins/blackbaud-assistant/">install the Plugin Assistant</a> before continuing.
+</p>
 
 ## What it does
 
@@ -18,6 +22,9 @@ The eTapestry Form plugin adds eTapestry DIY iFrame forms to your WordPress site
 - Auto-updates the height of the iframe, to avoid scrollbars
 
 ## How to install
+
+___
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-etap-form.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-etap-form.zip</a>
 
 ### Installing via FTP
 

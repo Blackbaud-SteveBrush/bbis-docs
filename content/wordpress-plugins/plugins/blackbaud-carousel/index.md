@@ -1,11 +1,15 @@
 ---
 layout: layout-sidebar
 name: Carousel
+icon: fa fa-film
+description: Twitter Bootstrap Carousels with many configurations
 ---
 
 # Carousel
 
-<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-carousel.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-carousel.zip</a>
+<p class="alert alert-warning">
+    <span class="label label-warning">Note:</span> This plugin requires the Plugin Assistant! Please <a href="/wordpress-plugins/plugins/blackbaud-assistant/">install the Plugin Assistant</a> before continuing.
+</p>
 
 ## What it does
 
@@ -39,6 +43,10 @@ The Carousel plugin creates the HTML necessary for a fully-functional Twitter Bo
     - Custom HTML after the slide
 
 ## How to install
+
+___
+
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-carousel.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-carousel.zip</a>
 
 ### Installing via FTP
 

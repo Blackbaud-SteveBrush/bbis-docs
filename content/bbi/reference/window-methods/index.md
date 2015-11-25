@@ -1,6 +1,8 @@
 ---
 layout: layout-sidebar
 name: Window methods
+description: Methods and properties appended to the browser Window
+icon: fa fa-desktop
 order: 1
 ---
 
@@ -84,9 +86,9 @@ BBI has very few Window methods. This is intentional, to avoid as many code coll
                         </td>
     				</tr>
     				<tr>
-        				<td class="name">value (optional)</td>
+        				<td class="name">value</td>
     					<td class="type">Various</td>
-        				<td>Set a key to any valid value. Omit to return the existing value.</td>
+        				<td>(Optional) Set a key to any valid value. Omit to return the existing value.</td>
     				</tr>
     			</tbody>
     		</table>

@@ -7,7 +7,7 @@ name: BBNC Localization
 
 ## Dependencies
 
-<p><a href="//api.blackbaud.com/packages/bbnc-localize-parts/bbnc-localize-parts.zip" class="btn btn-primary" target="_blank"><small class="glyphicon glyphicon-download-alt"></small>&nbsp;&nbsp;Download package files</a></p>
+<p><a href="https://github.com/convio/GMBU&#95;Interactive&#95;Services/raw/master/packages/customizations/localization/bbnc/localize-parts/bbnc-localize-parts.zip" class="btn btn-primary" target="_blank"><small class="glyphicon glyphicon-download-alt"></small>&nbsp;&nbsp;Download package files</a></p>
 <p>
 	<small class="text-muted"><em>29 kb (.zip) - opens in new window</em></small>
 </p>

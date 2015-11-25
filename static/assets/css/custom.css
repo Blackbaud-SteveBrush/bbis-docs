@@ -89,6 +89,7 @@ p {
     }
     .table-parameters td.name {
         width: 20%;
+        white-space: nowrap;
     }
     .table-parameters td.type {
         width: 12%;
@@ -127,7 +128,7 @@ p {
 }
 
 .welcome {
-  background: #333;
+  background-image: url(/assets/img/bridge-resized-medium.jpg);
 }
 
 pre,

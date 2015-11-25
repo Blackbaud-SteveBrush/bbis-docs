@@ -3,7 +3,7 @@ layout: layout-sidebar
 name: Shelter Buddy API
 ---
 
-# Accordion Content
+# ShelterBuddy API (JavaScript)
 
 ## Dependencies
 

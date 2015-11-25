@@ -1,11 +1,15 @@
 ---
 layout: layout-sidebar
 name: Luminate Survey
+icon: fa fa-clipboard
+description: Surveys for your WordPress clients, built from the Luminate API
 ---
 
 # Luminate Survey
 
-<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-luminate-survey.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-luminate-survey.zip</a>
+<p class="alert alert-warning">
+    <span class="label label-warning">Note:</span> This plugin requires the Plugin Assistant! Please <a href="/wordpress-plugins/plugins/blackbaud-assistant/">install the Plugin Assistant</a> before continuing.
+</p>
 
 ## What it does
 
@@ -17,6 +21,10 @@ The Luminate Survey plugin adds API Survey forms to your WordPress site. Luminat
 - Editor button to allow you to easily add a form to your posts and pages
 
 ## How to install
+
+___
+
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-luminate-survey.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-luminate-survey.zip</a>
 
 ### Installing via FTP
 

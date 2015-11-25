@@ -3,7 +3,7 @@ layout: layout-sidebar
 name: Virtual Tour
 ---
 
-# Accordion Content
+# Virtual Tour
 
 ## Dependencies
 

@@ -5,12 +5,6 @@ name: Google Conversion Tracking
 
 # Google Conversion Tracking
 
-## Dependencies
-
-
-## HTML
-
-
 ## JavaScript
 
 ### Add the following action to your BBI Application JavaScript file:

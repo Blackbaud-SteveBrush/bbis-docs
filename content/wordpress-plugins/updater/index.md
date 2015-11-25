@@ -2,6 +2,8 @@
 layout: layout-sidebar
 name: Theme & Plugin Updater
 order: 4
+icon: fa fa-cloud-download
+description: Learn how the updater works with the themes and plugins
 ---
 
 # Theme & Plugin Updater

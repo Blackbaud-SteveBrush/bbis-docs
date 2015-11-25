@@ -2,7 +2,7 @@
 layout: layout-sidebar
 order: 3
 name: Technical Reference
-description: Description here.
+description: Documentation for various methods and properties
 icon: fa fa-sitemap
 ---
 

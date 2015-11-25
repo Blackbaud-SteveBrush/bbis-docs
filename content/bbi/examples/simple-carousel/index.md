@@ -17,9 +17,9 @@ name: Simple Carousel
 	&lt;!--
 	Each table represents one slide.
 	No classes are required on the tables; the plugin simply associates:
-	The first row is the image
-	The second row is the title
-	The third row is the caption
+    	The first TR is the image
+    	The second TR is the title
+    	The third TR is the caption
 	-->
 	&lt;table>
 		&lt;tr>

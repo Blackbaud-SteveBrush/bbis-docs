@@ -1,11 +1,15 @@
 ---
 layout: layout-sidebar
 name: Flyer
+icon: fa fa-newspaper-o
+description: Popups to display static content, images, or shortcodes
 ---
 
 # Flyer
 
-<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-flyer.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-flyer.zip</a>
+<p class="alert alert-warning">
+    <span class="label label-warning">Note:</span> This plugin requires the Plugin Assistant! Please <a href="/wordpress-plugins/plugins/blackbaud-assistant/">install the Plugin Assistant</a> before continuing.
+</p>
 
 ## What it does
 
@@ -29,6 +33,9 @@ The Flyer plugin creates the HTML (and CSS/JS) necessary for a fully-functional 
     - Custom HTML
 
 ## How to install
+
+___
+<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-flyer.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-flyer.zip</a>
 
 ### Installing via FTP
 

@@ -10,7 +10,7 @@ icon: fa fa-sitemap
 
 ## Overview
 
-<p class="alert alert-info">Applications execute custom functionality through the use of `.action()`.</p>
+<p class="alert alert-info">Applications execute custom functionality through the use of `app.action()`.</p>
 
 ### Some key points regarding actions:
 
@@ -29,7 +29,7 @@ ___
 
 <p class="alert alert-info">[Browse the examples](/bbi/examples/) before writing your customization. You may find some code you can borrow for your project.</p>
 
-If you cannot find an example application that meets your needs, you'll need to roll up your sleeves and write one from scratch.
+If you cannot find an example action that meets your needs, you'll need to roll up your sleeves and write one from scratch.
 
 ### An action generally follows this structure:
 
@@ -57,31 +57,24 @@ Insert on the page, wherever you want your customization to take effect:
 
 **Data attributes reference:**
 
-<table class="table table-striped">
+<table class="table table-parameters">
 	<tr>
-		<td>
-			<strong>`data-bbi-src="/path/to/app/.js"`</strong><br>
-			Value: the link to your custom script
-		</td>
+		<td class="name">data-bbi-src</td>
+		<td>The source of your custom script.</td>
 	</tr>
 	<tr>
-		<td>
-			<strong>`data-bbi-app="SomeAppAlias"`</strong><br>
-			Value: the alias (or name) of your application<br>
-		</td>
+		<td class="name">data-bbi-app</td>
+		<td>The alias (or name) of your application.</td>
 	</tr>
 	<tr>
-		<td>
-			<strong>`data-bbi-action="SomeAppAction"`</strong><br>
-			Value: the name of the action to be called<br>
-		</td>
+		<td class="name">data-bbi-action</td>
+		<td>The name of the action to be called.</td>
 	</tr>
 	<tr>
+		<td class="name">data-*</td>
 		<td>
-			<p><strong>`data-*`</strong><br>
-			Value: any string<br>
-			You can pass options to your actions using custom HTML5 data attributes. For example, if you wanted to pass an option named <code>appId</code> with a value of "45", you would add the data attribute <code>data-app-id="45"</code> to the tag (the data attributes use spinal-case and are converted to camel-case when received by the application).</p>
-			<p><a href="/bbi/reference/app-methods/#action">Read more about passing options to your actions&nbsp;&rarr;</a></p>
+		    <p>You can pass options to your actions using custom HTML5 data attributes. For example, if you wanted to pass an option named `appId` with a value of "45", you would add the data attribute <code>data-app-id="45"</code> to the tag (the data attributes use spinal-case and are converted to camel-case when received by the application).</p>
+		    <p><a href="/bbi/reference/app-methods/#action">Read more about passing options to your actions&nbsp;&rarr;</a></p>
 		</td>
 	</tr>
 </table>

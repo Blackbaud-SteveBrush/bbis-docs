@@ -5,14 +5,6 @@ name: Flickr Gallery
 
 # Flickr Gallery and Feed
 
-## Dependencies
-
-<ul>
-	<li><a href="http://getbootstrap.com/javascript/#collapse" target="_blank">Bootstrap Collapse (JavaScript)</a></li>
-	<li><a href="http://getbootstrap.com/javascript/#transitions" target="_blank">Bootstrap Transitions (JavaScript)</a></li>
-</ul>
-<p class="alert alert-info">If your site is already using the Bootstrap framework, you won't need to worry about the above dependencies.</p>
-
 ## HTML
 
 <p>Insert the following HTML where you want the <strong>gallery preview</strong> to appear (useful for home pages, or sidebars).</p>

@@ -2,370 +2,480 @@
 layout: layout-sidebar
 name: Helper methods
 order: 4
+description: Methods to make your job easier
+icon: fa fa-medkit
 ---
 
 # Helper Methods
 
 Helper methods are commonly used JavaScript methods that you can use on your projects. A helper method (in this case) is a _utility_ function that has no direct relationship with BBI, but is common enough to merit its inclusion.
 
-## .arrayFromString()
+## arrayFromString
 
-<div id="method-array-from-string" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.arrayFromString( <em>string</em>, <em>delimiter</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>Array</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.arrayFromString ( String serial, String delimiter)</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns an array based on a specified delimiter. The results are also trimmed automatically.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">serial</td>
+    					<td class="type">String</td>
+    					<td>A string to separate into an array</td>
+    				</tr>
+    				<tr>
+        				<td class="name">delimiter</td>
+    					<td class="type">String</td>
+        				<td>(Optional) The string to use to separate the serial into parts. Default: ","</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Returns an array based on a specified delimiter. The results are also trimmed automatically.</p>
-			<div class="well">
-				<p>
-					<strong>string</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>delimiter <em>(optional)</em></strong><br>
-					<span class="text-muted">Type: string</span><br>
-					<span class="text-muted">Default: ","</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">var myList = "orange/yellow/green";
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">var myList = "orange/yellow/green";
 var myArr = BBI.helper.arrayFromString(myList, "/");
 alert(myArr[0]); // "orange"</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .clone()
+## clone
 
-<div id="method-clone" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.clone( <em>variable</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>Various</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.clone ( Various variable )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns a duplicate of a variable or object.</p>
+		<p class="alert alert-info">Useful when you need to alter the contents of an array, but keep its original state intact.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">variable</td>
+    					<td class="type">Various</td>
+    					<td>Anything you wish to clone (most likely an array or object).</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Returns a duplicate of a variable or object.</p>
-			<p class="alert alert-info"><span class="label label-info">NOTE</span> Useful when you need to alter the contents of an array, but keep its original state intact.</p>
-			<div class="well">
-				<p>
-					<strong>variable</strong><br>
-					<span class="text-muted">Type: any</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">var fruits = { red: "apple", green: "lime" };
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">var fruits = { red: "apple", green: "lime" };
 var temp = BBI.helper.clone(fruits);
 
 var fruit;
 while (fruit = temp.pop()) {
-	alert(fruit);
+	console.log(fruit);
 }</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .data()
+## data
 
-<div id="method-data" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.data( <em>element</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>Object</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.data ( Object element )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns an object storing all HTML attributes for an element, in camelCase.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">element</td>
+    					<td class="type">HTML DOM Element</td>
+    					<td>The element that holds the attributes you wish to retrieve</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Returns an object storing all HTML attributes for an element, in camelCase.</p>
-			<div class="well">
-				<p>
-					<strong>element</strong><br>
-					<span class="text-muted">Type: HTML DOM Element</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">var element = document.getElementById("wrapper");
+		<h3>Examples</h3>
+		<h4>Given the following HTML:</h4>
+		<pre><code class="language-markup">&lt;div id="wrapper" data-api-key="myKey">
+    &lt;!-- ... -->
+&lt;/div></code></pre>
+		<h4>The following JavaScript will return the element's attributes:</h4>
+        <pre><code class="language-javascript">var element = document.getElementById("wrapper");
 var attributes = BBI.helper.data(element);
-console.log(attributes.id, attributes.apiKey);</code></pre>
-		</div>
+console.log(attributes.id); // prints 'wrapper'
+console.log(attributes.apiKey); // prints 'myKey'</code></pre>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .doOnFind()
+## doOnFind
 
-<div id="method-do-on-find" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.doOnFind( <em>selector</em>, <em>callback</em>, <em>duration</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>null</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.doOnFind ( String selector, Function callback, Integer duration )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Executes a callback when a certain element appears on the page.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">selector</td>
+    					<td class="type">String</td>
+    					<td>The jQuery selector for the element to look for</td>
+    				</tr>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>This function is called when the element is found</td>
+    				</tr>
+    				<tr>
+    					<td class="name">duration</td>
+    					<td class="type">Integer</td>
+    					<td>(Optional) The number of milliseconds to wait before quitting the search. Default: 10000 (10 seconds).</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Executes a callback when a certain element appears on the page.</p>
-			<div class="well">
-				<p>
-					<strong>selector</strong><br>
-					<span class="text-muted">Type: string, jQuery selector</span>
-				</p>
-				<p>
-					<strong>callback</strong><br>
-					<span class="text-muted">Type: function</span>
-				</p>
-				<p>
-					<strong>duration</strong><br>
-					<span class="text-muted">Type: integer (milliseconds)</span><br>
-					<span class="text-muted">Default: 10000</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">BBI.helper.doOnFind('#my-div', function () {
+		<h3>Examples</h3>
+		<h4>The following JavaScript will return the element's attributes:</h4>
+        <pre><code class="language-javascript">BBI.helper.doOnFind('#my-div', function () {
 	// The div was found, do something!
-}, 15000); // wait 15 seconds before quitting the search</code></pre>
-		</div>
+}, 15000);</code></pre>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .executeFunctionByName()
+## executeFunctionByName
 
-<div id="method-execute-function-by-name" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.executeFunctionByName( <em>name, arguments, context</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Executes a function based on its name alone.</p>
-			<p class="alert alert-info"><span class="label label-info">NOTE</span> Useful when you have the function's name stored as a variable, and need to execute it.</p>
-			<div class="well">
-				<p>
-					<strong>name</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>arguments</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: Array, various types</span>
-				</p>
-				<p>
-					<strong>context</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: object</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">// Pass the context object as a parameter:
-BBI.helper.executeFunctionByName("sayHello", [], MyApp.actions);
-
-// Or, just pass the entire context chain at once:
-BBI.helper.executeFunctionByName("MyApp.actions.sayHello");</code></pre>
-		</div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.executeFunctionByName ( String function, Array arguments, Object context )</code></h4>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
+	<div class="panel-body">
+		<p>Executes a function based on its name alone.</p>
+        <p class="alert alert-info">Useful when you have the function's name stored as a variable, and need to execute it inside a certain context.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">function</td>
+    					<td class="type">String</td>
+    					<td>The name of the function to execute</td>
+    				</tr>
+    				<tr>
+    					<td class="name">arguments</td>
+    					<td class="type">Array</td>
+    					<td>(Optional) Arguments to pass to the function</td>
+    				</tr>
+    				<tr>
+    					<td class="name">context</td>
+    					<td class="type">Object</td>
+    					<td>(Optional) The object that contains the function.</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+		<h4>Execute a function in a certain context:</h4>
+        <pre><code class="language-javascript">BBI.helper.executeFunctionByName("sayHello", [], MyApp.actions); // Executes MyApp.actions.sayHello</code></pre>
+        <h4>Or, just pass the entire context chain at once:</h4>
+        <pre><code class="language-javascript">BBI.helper.executeFunctionByName("MyApp.actions.sayHello");</code></pre>
+	</div>
 </div>
 
-## .functionExists()
+## functionExists
 
-<div id="method-function-exists" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.functionExists( <em>function_name, context</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>Boolean</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.functionExists ( String function, Object context )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns <code>true</code> or <code>false</code> if the named function exists. The second parameter is optional, but allows you to pass in the named function's context.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">function</td>
+    					<td class="type">String</td>
+    					<td>The name of the function to check.</td>
+    				</tr>
+    				<tr>
+    					<td class="name">context</td>
+    					<td class="type">Object</td>
+    					<td>(Optional) The object that contains the function.</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>
-				Returns <code>true</code> or <code>false</code> if the named function exists. The second parameter is optional, but allows you to pass in the named function's context.
-			</p>
-			<div class="well">
-				<p>
-					<strong>function_name</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>context</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: object</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">if (BBI.helper.functionExists("MyApp.actions.example1.init")) {
-    MyApp.actions.example1.init();
-}
-
-// or
-if (BBI.helper.functionExists("example1.init", MyApp.actions)) {
-    MyApp.actions.example1.init();
+		<h3>Examples</h3>
+		<h4>Check if a function exists before executing it:</h4>
+        <pre><code class="language-javascript">if (BBI.helper.functionExists("myFunction")) {
+    myFunction();
 }</code></pre>
-		</div>
+        <h4>Pass in the function's context, if it belongs to an object:</h4>
+        <pre><code class="language-javascript">if (BBI.helper.functionExists("init", MyApp.actions.sayHello)) {
+    MyApp.actions.sayHello.init();
+}</code></pre>
+        <h4>Or, just pass the entire context chain at once:</h4>
+        <pre><code class="language-javascript">if (BBI.helper.functionExists("MyApp.actions.sayHello.init")) {
+    MyApp.actions.sayHello.init();
+}</code></pre>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .getUrlVars()
+## getUrlVars
 
-<div id="method-get-url-vars" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.getUrlVars( <em>url</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>Array</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns an array representing the variables in the URL string. If a string is passed as an argument, the variables will be derived from the string instead.</p>
-			<div class="well">
-				<p>
-					<strong>url</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">var variables;
-var pageId;
-
-// from url:
-variables = BBI.helper.getUrlVars();
-pageId = variables["pid"];
-
-// or, from string:
-variables = BBI.helper.getUrlVars("http://www.domain.org/?pid=5");
-pageId = variables["pid"];
-
-// or, for one-time use:
-pageId = BBI.helper.getUrlVars()["pid"];</code></pre>
-		</div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.getUrlVars ( String url )</code></h4>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
+	<div class="panel-body">
+		<p>Returns an array representing the variables in the URL string. If a string is passed as an argument, the variables will be derived from the string instead.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">url</td>
+    					<td class="type">String</td>
+    					<td>(Optional) A URL string to retrieve attributes from, instead of the actual URL</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+		<h4>Get attributes from URL:</h4>
+        <pre><code class="language-javascript">var variables = BBI.helper.getUrlVars();
+var pageId = variables["pid"];</code></pre>
+        <h4>Get attributes from URL string:</h4>
+        <pre><code class="language-javascript">var variables = BBI.helper.getUrlVars("http://www.domain.org/?pid=5");
+var pageId = variables["pid"];</code></pre>
+        <h4>Get a single attribute, all in one statement:</h4>
+        <pre><code class="language-javascript">var pageId = BBI.helper.getUrlVars()["pid"];</code></pre>
+	</div>
 </div>
 
-## .isMobile()
+## isMobile
 
-<div id="method-is-mobile" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.isMobile()</h4>
-			<div class="panel-subtitle">Returns: <em>Object</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns an object containing functions to check for specific mobile platforms; specifically: Android, BlackBerry, iOS, Opera, and Windows mobile.</p>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">if (BBI.helper.isMobile.any()) {
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.isMobile ()</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns an object containing functions to check for specific mobile platforms; specifically: Android, BlackBerry, iOS, Opera, and Windows mobile.</p>
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">if (BBI.helper.isMobile.any()) {
 	// We're on a mobile device!
 }
+
 if (BBI.helper.isMobile.Android()) {
 	// We're on an Android device!
 }</code></pre>
-		</div>
 	</div>
 </div>
 
-## .loadScript()
+## loadScript
 
-<div id="method-load-script" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.loadScript( <em>src, callback</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.loadScript ( String source, Function callback )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Loads a script from a URL onto the page.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">source</td>
+    					<td class="type">String</td>
+    					<td>The source of the JavaScript file.</td>
+    				</tr>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>(Optional) The function to call after the script has loaded.</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Loads a script from a URL onto the page.</p>
-			<div class="well">
-				<p>
-					<strong>src</strong><br>
-					<span class="text-muted">Type: String</span>
-				</p>
-				<p>
-					<strong>callback</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: function</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">BBI.helper.loadScript("myscript.js", function () {
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">BBI.helper.loadScript("myscript.js", function () {
 	// Do something after load...
 });</code></pre>
-		</div>
 	</div>
 </div>
 
-## .objectLength()
+## objectLength
 
-<div id="method-object-length" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.objectLength( <em>obj</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.objectLength ( Object object )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns the number of top-level properties in an Object.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">object</td>
+    					<td class="type">Object</td>
+    					<td>The object whose properties you wish to count</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Returns the number of top-level properties in an Object.</p>
-			<div class="well">
-				<p>
-					<strong>obj</strong><br>
-					<span class="text-muted">Type: Object</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">var settings = {debug: true, name: "Marsha", gender: "Female"};
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">var settings = { 
+    debug: true, 
+    name: "Marsha", 
+    gender: "Female"
+};
+
 var length = BBI.helper.objectLength(settings); // returns 3</code></pre>
-		</div>
 	</div>
 </div>
 
-## .scrollTo()
+## scrollTo
 
-<div id="method-scroll-to" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.scrollTo( <em>target</em>, <em>speed</em>, <em>callback</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>null</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.scrollTo ( String target, Integer speed, Function callback )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Pans the screen to a certain element on the page.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">target</td>
+    					<td class="type">String</td>
+    					<td>The jQuery selector of the element to pan to</td>
+    				</tr>
+    				<tr>
+    					<td class="name">speed</td>
+    					<td class="type">Integer</td>
+    					<td>(Optional) How quickly, in milliseconds, to pan to the element. Default: 500.</td>
+    				</tr>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>(Optional) The function to call after the pan is complete.</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Allows the screen to pan to a certain element on the page.</p>
-			<div class="well">
-				<p>
-					<strong>target</strong><br>
-					<span class="text-muted">Type: String (selector) or DOM element</span>
-				</p>
-				<p>
-					<strong>speed <em>(optional)</em></strong><br>
-					<span class="text-muted">Type: integer</span><br>
-					<span class="text-muted">Default: 500 (milliseconds)</span>
-				</p>
-				<p>
-					<strong>callback <em>(optional)</em></strong><br>
-					<span class="text-muted">Type: function</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">// Pass a selector:
-BBI.helper.scrollTo('#my-div');
-
-// Pass a jQuery object:
-BBI.helper.scrollTo($('#my-div'));
-
-// Do something after the scroll is complete:
-BBI.helper.scrollTo('#my-div', 800, function () {
-	// ...
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">BBI.helper.scrollTo('#my-div', 500, function () {
+	// Do something after the pan completes...
 });</code></pre>
-		</div>
 	</div>
 </div>
 
-## .urlContains()
+## urlContains
 
-<div id="method-url-contains" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.helper.urlContains( <em>keyword</em> )</h4>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.helper.urlContains ( String needle )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns `true` or `false` if the given "needle" exists in the URL ("haystack").</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">needle</td>
+    					<td class="type">String</td>
+    					<td>The string to find in the URL</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Returns a boolean describing if the given keyword exists in the URL.</p>
-			<div class="well">
-				<p>
-					<strong>keyword</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-<pre class="line-numbers"><code class="language-javascript">if (BBI.helper.urlContains("faf/register.asp")) {
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">if (BBI.helper.urlContains("faf/register.asp")) {
     alert("We're on the FAF registration page!");
 }</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>

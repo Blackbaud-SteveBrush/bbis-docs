@@ -1,9 +1,15 @@
 ---
 layout: layout-sidebar
 name: Online Express
+icon: fa fa-credit-card
+description: Embeddable forms for posts and pages
 ---
 
 # Online Express
+
+<p class="alert alert-warning">
+    <span class="label label-warning">Note:</span> This plugin requires the Plugin Assistant! Please <a href="/wordpress-plugins/plugins/blackbaud-assistant/">install the Plugin Assistant</a> before continuing.
+</p>
 
 ## What it does
 
@@ -16,6 +22,8 @@ The Online Express Forms plugin makes it easy to catalog your various embed code
 - Social sharing capabilities on the various confirmation screens
 
 ## How to install
+
+___
 
 <a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-olx.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-olx.zip</a>
 

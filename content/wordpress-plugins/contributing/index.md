@@ -2,8 +2,8 @@
 layout: layout-sidebar
 order: 6
 name: Contributing
-description: Description here.
-icon: fa fa-sitemap
+description: How to update and contribute code
+icon: fa fa-comments-o
 ---
 
 # Contributing to Blackbaud's WordPress Plugins

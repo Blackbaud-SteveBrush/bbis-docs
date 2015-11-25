@@ -1,6 +1,8 @@
 ---
 layout: layout-sidebar
 name: BBI methods
+description: Core BBI methods and properties
+icon: fa fa-database
 order: 2
 ---
 
@@ -28,16 +30,14 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
 	<div class="panel-body">
 		<p>Returns an object representing all apps on the page.</p>
 		<h3>Examples</h3>
-        <pre><code class="language-javascript">(function () {
-    $(document).on('bbi-ready', function (e, bbi) {
-        
-        var allApps = bbi.apps();
+        <pre><code class="language-javascript">$(document).on('bbi-ready', function (e, bbi) {
+    
+    var allApps = bbi.apps();
 
-        // Access a specific app's actions...
-        allApps.MyApp.actions.sayHello.init();
-        
-    });
-}());</code></pre>
+    // Access a specific app's actions...
+    allApps.MyApp.actions.sayHello.init();
+    
+});</code></pre>
 	</div>
 </div>
 
@@ -68,33 +68,24 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
     					<td>The function to add to .NET PageRequestManager's <code>add&#95;endRequest</code></td>
     				</tr>
     				<tr>
-    					<td class="name">arguments (optional)</td>
+    					<td class="name">arguments</td>
     					<td class="type">Object</td>
-    					<td>Any arguments you wish to pass to the callback</td>
+    					<td>(Optional) Any arguments you wish to pass to the callback</td>
     				</tr>
     				<tr>
-        				<td class="name">context (optional)</td>
+        				<td class="name">context</td>
     					<td class="type">Object</td>
-        				<td>The object to be referenced as 'this' in the callback</td>
+        				<td>(Optional) The object to be referenced as 'this' in the callback</td>
     				</tr>
     			</tbody>
     		</table>
 		</div>
 		<h3>Examples</h3>
         <h4>Basic usage:</h4>
-        <pre><code class="language-javascript">(function () {
-    
-    BBI.attach(function () {});
-    
-}());</code></pre>
+        <pre><code class="language-javascript">BBI.attach(function () {});</code></pre>
         <h4>Send arguments to the callback:</h4>
-        <pre><code class="language-javascript">(function () {
-    
-    var myCallback = function (args) {};
-    
-    BBI.attach(myCallback, { foo: "bar" });
-    
-}());</code></pre>
+        <pre><code class="language-javascript">var myCallback = function (args) {};
+BBI.attach(myCallback, { foo: "bar" });</code></pre>
         <h4>Send the value of 'this' to the callback:</h4>
         <pre><code class="language-javascript">(function () {
     
@@ -125,6 +116,27 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
 	</div>
 	<div class="panel-body">
 		<p>Returns BBI's global defaults. This method may also return a specific item from the defaults array if a key is provided. If the second parameter is specified (value), this will overwrite the existing key's value.</p>
+		<div class="alert alert-info">
+    		<h4><strong>What's the difference between defaults, options, and settings?</strong></h4>
+    		<div class="table-responsive">
+        		<table class="table table-parameters">
+        		    <tbody>
+        				<tr>
+        					<td class="name">defaults</td>
+        					<td>The defaults set by BBI's extensions.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">options</td>
+        					<td>Custom properties set by the developer.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">settings</td>
+        					<td>The defaults and options merged into a single object.</td>
+        				</tr>
+        			</tbody>
+        		</table>
+    		</div>
+		</div>
 		<h3>Parameters</h3>
 		<div class="table-responsive">
     		<table class="table table-parameters">
@@ -137,14 +149,14 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
     		    </thead>
     		    <tbody>
     				<tr>
-    					<td class="name">key (optional)</td>
+    					<td class="name">key</td>
     					<td class="type">String</td>
-    					<td>The name of the property to set</td>
+    					<td>(Optional) The name of the property to set</td>
     				</tr>
     				<tr>
-    					<td class="name">value (optional)</td>
+    					<td class="name">value</td>
     					<td class="type">Various</td>
-    					<td>The value to set</td>
+    					<td>(Optional) The value to set</td>
     				</tr>
     			</tbody>
     		</table>
@@ -274,7 +286,7 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
         				<td class="name">options</td>
     					<td class="type">Object</td>
         				<td>
-            				<p>The following options can be used:</p>
+            				<p>(Optional) The following options can be used:</p>
             				<ul class="list-group">
             				    <li class="list-group-item">
             						<h4 class="list-group-item-heading">adminViewSelector</h4>
@@ -433,7 +445,7 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
     				<tr>
     					<td class="name">options</td>
     					<td class="type">Object</td>
-    					<td>Any options you wish to push to the directive. The options will be merged with the defaults, producing the directive's settings. To allow a developer to configure an extension outside of BBI, you can use the options object passed via <a href="#init">BBI.init()</a>. To do this, simply instantiate the extension with the <a href="#options">BBI.options()</a> method (see example below).</td>
+    					<td>(Optional) Any options you wish to push to the directive. The options will be merged with the defaults, producing the directive's settings. To allow a developer to configure an extension outside of BBI, you can use the options object passed via <a href="#init">BBI.init()</a>. To do this, simply instantiate the extension with the <a href="#options">BBI.options()</a> method (see example below).</td>
     				</tr>
     			</tbody>
     		</table>
@@ -471,220 +483,284 @@ Most of the methods below can utilize chaining, allowing for code efficiencies. 
 	</div>
 </div>
 
-## .isAdminView()
+## isAdminView
 
-<div id="method-is-admin-view" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.isAdminView()</h4>
-			<div class="panel-subtitle">Returns: <em>Boolean</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns <code>true</code> or <code>false</code> if the current page is an administrator-accessible page.</p>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">if (true === BBI.isAdminView()) {
-	// We're on an admin page!
-}</code></pre>
-            <p>
-                The admin view is determined by the presence of a certain HTML selector. You can change this selector via:
-                <pre class="line-numbers"><code class="language-javascript">BBI.init({ 
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.isAdminView ()</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns <code>true</code> or <code>false</code> if the current page is an administrator-accessible page.</p>
+		<p>The admin view is determined by the presence of a certain HTML selector. You can change this selector via:</p>
+        <pre class="line-numbers"><code class="language-javascript">BBI.init({ 
     adminViewSelector: '.some-selector'
 });</code></pre>
-            </p>
-		</div>
-	</div>
-</div>
-
-## .isDebugMode()
-
-<div id="method-is-debug-mode" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.isDebugMode()</h4>
-			<div class="panel-subtitle">Returns: <em>Boolean</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns <code>true</code> or <code>false</code> if BBI is currently in debug mode.</p>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">if (true === BBI.isDebugMode()) {
-	// We're in debug mode, so display an error log!
+		<h3>Examples</h3>
+        <h4>Do something if we're on an admin page:</h4>
+        <pre><code class="language-javascript">if (true === BBI.isAdminView()) {
+	// We're on an admin page!
 }</code></pre>
-		</div>
 	</div>
 </div>
 
-## .isPageEditor()
-<div id="method-is-page-editor" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.isPageEditor()</h4>
-			<div class="panel-subtitle">Returns: <em>Boolean</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns <code>true</code> or <code>false</code> if the current user is editing a NetCommunity page or template.</p>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">if (true === BBI.isPageEditor()) {
+## isDebugMode
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.isDebugMode ()</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns <code>true</code> or <code>false</code> if BBI is currently in debug mode.</p>
+		<p>You can put BBI in debug mode via:</p>
+        <pre class="line-numbers"><code class="language-javascript">BBI.init({ 
+    debug: true
+});</code></pre>
+		<h3>Examples</h3>
+        <h4>Do something if BBI is in debug mode:</h4>
+        <pre><code class="language-javascript">if (true === BBI.isDebugMode()) {
+	// We're in debug mode...
+}</code></pre>
+	</div>
+</div>
+
+## isPageEditor
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.isPageEditor ()</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns <code>true</code> or <code>false</code> if the current page is a CMS page.</p>
+		<p>A page is determined to be a CMS page when a certain string fragment exists in the URL. You can change this string via:</p>
+        <pre><code class="language-javascript">BBI.init({ 
+    pageEditorUrlRegex: "/wp-admin/"
+});</code></pre>
+		<h3>Examples</h3>
+        <h4>Do something on a CMS page:</h4>
+        <pre><code class="language-javascript">if (true === BBI.isPageEditor()) {
 	// We're editing the page!
 }</code></pre>
-            <p>
-                The editor view is determined by certain string fragments in the URL. You can change this regex via:
-                <pre class="line-numbers"><code class="language-javascript">BBI.init({ 
-    pageEditorUrlRegex: "/something/in/the/url"
-});</code></pre>
-            </p>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .isPartEditor()
-<div id="method-is-part-editor" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.isPartEditor()</h4>
-			<div class="panel-subtitle">Returns: <em>Boolean</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns <code>true</code> or <code>false</code> if the current user is in the editor popup of a NetCommunity Custom Part.</p>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">if (true === BBI.isPartEditor()) {
+## isPartEditor
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.isPartEditor ()</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Returns <code>true</code> or <code>false</code> if the current user is in the editor popup of a NetCommunity Custom Part.</p>
+		<h3>Examples</h3>
+        <h4>Do something when editing a NetCommunity Custom Part:</h4>
+        <pre><code class="language-javascript">if (true === BBI.isPartEditor()) {
 	// The user is editing a custom part...
 }</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .jQuery()
+## jQuery
 
-<div id="method-jquery" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.jQuery( <em>location</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>jQuery</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.jQuery ( String parent )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>This method returns jQuery based on its parent object. This is especially useful when using jQuery's `noConflict` setup.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">parent</td>
+    					<td class="type">String</td>
+    					<td>
+    					    <p>(Optional) The name of the object that contains the jQuery version you wish to return.</p>
+            				<ul class="list-group">
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">namespace (default)</h4>
+            						<p>Return a reference to BBI's jQuery.</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">window</h4>
+            						<p>Return a reference to Window's jQuery.</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">yahoo</h4>
+            						<p>Return a reference to Luminate's Yahoo jQuery.</p>
+            					</li>
+            				</ul>
+                        </td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>This method returns jQuery based on its location (or parent object). This is especially useful when using jQuery's noConflict() setup.</p>
-			<div class="well">
-				<p>
-					<strong>location</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: string</span><br>
-					<span class="text-muted">Possible values: "namespace", "window", "yahoo"</span><br>
-					<span class="text-muted">Default: "namespace"</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">var bbi$ = BBI.jQuery("namespace"); // Get jQuery associated with BBI
+		<h3>Examples</h3>
+        <h4>Get a certain reference to jQuery:</h4>
+        <pre><code class="language-javascript">var bbi$ = BBI.jQuery("namespace"); // Get jQuery associated with BBI
 var win$ = BBI.jQuery("window"); // Get jQuery associated with the Window
-var yahoo$ = BBI.jQuery("yahoo"); // Get jQuery associated with PageBuilder
-</code></pre>
-            <p>How to check if a certain plugin is associated with a version of jQuery:</p>
-			<pre class="line-numbers"><code class="language-javascript">if (typeof BBI.jQuery("namespace").fn.owlCarousel === "function") {
+var yahoo$ = BBI.jQuery("yahoo"); // Get jQuery associated with PageBuilder</code></pre>
+        <h4>Check if a certain plugin is associated with a version of jQuery:</h4>
+        <pre><code class="language-javascript">if (typeof BBI.jQuery("namespace").fn.owlCarousel === "function") {
 	// Owl Carousel exists on BBI's version of jQuery...
 } else if (typeof bbi.jQuery("window").fn.owlCarousel === "function") {
 	// Owl Carousel exists on the window's version of jQuery...
 } else {
 	// Owl Carousel doesn't exist at all...
 }</code></pre>
-		</div>
 	</div>
 </div>
 
-## .log()
-				
-<div id="method-log" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.log( <em>message, addToDOM</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Adds a custom message to either the browser console, or to the top of the page.</p>
-			<div class="alert alert-info">
-				For debugging, and printing complex messages with object references, etc., continue to use console.log().
-			</div>
-			<div class="well">
-				<p>
-					<strong>message</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>addToDOM</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: boolean</span><br>
-					<span class="text-muted">Default: <code>true</code></span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">// Display a message to users where the BBI.isAdminView() passes.
-BBI.log("The function name you specified does not exist.");
+## log
 
-// Print the message only in the console
-BBI.log("Hello, World!", false);</code></pre>
-						</div>
-					</div>
-					<p class="back-to-top"><a href="#top">Back to top ^</a></p>
-				</div>
-
-## .map()
-				
-<div id="method-map" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.map( <em>key, value</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI, value</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.log ( String message, Boolean addToDOM)</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Adds a custom message to either the browser console, or to the top of the page.</p>
+		<p class="alert alert-info">
+			For debugging, and printing complex messages with object references, etc., continue to use console.log().
+		</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">message</td>
+    					<td class="type">String</td>
+    					<td>The message to display.</td>
+    				</tr>
+    				<tr>
+        				<td class="name">addToDOM</td>
+    					<td class="type">Boolean</td>
+        				<td>(Optional) Set to `true` to add it to the top of the page. Note that this message will only appear if `BBI.isAdminView` passes. Defaults to `true`.</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Values passed to this method will be saved in BBI's <em>public</em> scope, allowing its various extensions, apps, and actions to access them. (To set <em>private</em> keys, use <a href="/bbi/reference/window-methods/#bbi">BBI()</a>, instead.)</p>
-			<p>This method prevents duplicates.</p>
-			<p>
-				<strong>Reserved Keys</strong><br>
-				These keys are currently in use by BBI and should not be set:<br>
-				<em>extension</em><br>
-				<em>instantiate</em><br>
-				<em>jQuery</em><br>
-				<em>helper</em><br>
-				<em>info</em><br>
-				<em>isAdminView</em><br>
-				<em>isDebugMode</em><br>
-				<em>isPageEditor</em><br>
-				<em>isPartEditor</em><br>
-				<em>log</em><br>
-				<em>storage</em><br>
-				<em>attach</em><br>
-				<em>olx</em><br>
-				<em>require</em><br>
-				<em>register</em><br>
-				<em>apps</em>
-			</p>
-			<div class="well">
-				<p>
-					<strong>key</strong><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>value</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: any</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">// Set the data:
-BBI.map("myData", {
+		<h3>Examples</h3>
+        <h4>Print a message for admin users:</h4>
+        <pre><code class="language-javascript">BBI.log("The function name you specified does not exist.");</code></pre>
+        <h4>Print a message only in the browser console:</h4>
+        <pre><code class="language-javascript">BBI.log("The function name you specified does not exist.", false);</code></pre>
+	</div>
+</div>
+
+## map
+
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.map ( String key, Various value )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Values passed to this method will be saved in BBI's <em>public</em> scope, allowing its various extensions, apps, and actions to access them. (To set <em>private</em> keys, use <a href="/bbi/reference/window-methods/#bbi">BBI()</a>, instead.)</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">key</td>
+    					<td class="type">String</td>
+    					<td>
+    					    <p>The name of the public property. While this method does check to make sure you're not overwriting something that's already in use, the following keys are reserved:</p>
+            				<ul class="list-group">
+            				    <li class="list-group-item">
+            						extension
+            					</li>
+                				<li class="list-group-item">
+            						instantiate
+            					</li>
+                				<li class="list-group-item">
+            						jQuery
+            					</li>
+                				<li class="list-group-item">
+            						helper
+            					</li>
+                				<li class="list-group-item">
+            						info
+            					</li>
+                				<li class="list-group-item">
+            						isAdminView
+            					</li>
+                				<li class="list-group-item">
+            						isDebugMode
+            					</li>
+                				<li class="list-group-item">
+            						isPageEditor
+            					</li>
+                				<li class="list-group-item">
+            						isPartEditor
+            					</li>
+                				<li class="list-group-item">
+            						log
+            					</li>
+                				<li class="list-group-item">
+            						storage
+            					</li>
+                				<li class="list-group-item">
+            						attach
+            					</li>
+                				<li class="list-group-item">
+            						olx
+            					</li>
+                				<li class="list-group-item">
+            						require
+            					</li>
+                				<li class="list-group-item">
+            						register
+            					</li>
+                				<li class="list-group-item">
+            						apps
+            					</li>
+            				</ul>
+    					</td>
+    				</tr>
+    				<tr>
+        				<td class="name">value</td>
+    					<td class="type">Various</td>
+        				<td>The value to set.</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>First, set a public property of BBI:</h4>
+        <pre><code class="language-javascript">BBI.map("myData", {
 	first: "Jayne",
 	last: "Cobb"
-});
-
-// Then, in your action, access the data:
-BBI.myData.first; // produces, "Jayne"
-</code></pre>
-		</div>
+});</code></pre>
+        <h4>Then, access the property, via:</h4>
+        <pre><code class="language-javascript">console.log(BBI.myData.first); // prints, "Jayne"</code></pre>
 	</div>
 </div>
 
 ## on
 
-This method allows you to insert code at specific points during BBI's initialization cycle.
+This method allows you to insert code at specific points during BBI's initialization.
 
-<p class="alert alert-info">This method may only be used during BBI's initialization cycle, specifically when dealing with extensions. To learn more about extensions and how they're built, go to the Contributing section.</p>
+<p class="alert alert-info">This method may only be used during BBI's initialization, specifically when dealing with extensions. To learn more about extensions and how they're built, go to the <a href="/bbi/contributing/">Contributing</a> section.</p>
 
 <div class="panel panel-reference">
 	<div class="panel-heading">
@@ -706,7 +782,7 @@ This method allows you to insert code at specific points during BBI's initializa
     					<td class="name">hook</td>
     					<td class="type">String</td>
     					<td>
-    					    The hook attribute can be one of the following:
+    					    <p>The hook attribute can be one of the following:</p>
             				<ul class="list-group">
             					<li class="list-group-item">
             						<h4 class="list-group-item-heading">preload</h4>
@@ -757,129 +833,156 @@ This method allows you to insert code at specific points during BBI's initializa
 	</div>
 </div>
 
-## .options()
+## options
 
-<div id="method-options" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.options( <em>key</em>, <em>value</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>various</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns BBI's global options. This method may also return a specific item from the options array if a key is provided. If the second parameter is specified (value), this will overwrite the existing key's value.</p>
-			<?php echo $bbi_parameters_description; ?>
-			<div class="well">
-				<p>
-					<strong>key</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>value</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: various</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">// Get all options:
-var bbi_options = BBI.options();
-
-// Get one option:
-var isDebug = BBI.options("debug");
-
-// Set an option's value:
-BBI.options("debug", true);</code></pre>
-		</div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-javascript">BBI.options ( String key, Various value )</code></h4>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
+	<div class="panel-body">
+		<p>Returns BBI's global options. This method may also return a specific item from the options array if a key is provided. If the second parameter is specified (value), this will overwrite the existing key's value.</p>
+		<div class="alert alert-info">
+    		<h4><strong>What's the difference between defaults, options, and settings?</strong></h4>
+    		<div class="table-responsive">
+        		<table class="table table-parameters">
+        		    <tbody>
+        				<tr>
+        					<td class="name">defaults</td>
+        					<td>The defaults set by BBI's extensions.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">options</td>
+        					<td>Custom properties set by the developer.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">settings</td>
+        					<td>The defaults and options merged into a single object.</td>
+        				</tr>
+        			</tbody>
+        		</table>
+    		</div>
+		</div>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">key</td>
+    					<td class="type">String</td>
+    					<td>(Optional) The name of the property to set</td>
+    				</tr>
+    				<tr>
+    					<td class="name">value</td>
+    					<td class="type">Various</td>
+    					<td>(Optional) The value to set</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Get all options:</h4>
+        <pre><code class="language-javascript">var options = BBI.options();</code></pre>
+        <h4>Get one option:</h4>
+        <pre><code class="language-javascript">var isDebug = BBI.options("debug");</code></pre>
+        <h4>Set an option's value:</h4>
+        <pre><code class="language-javascript">BBI.options("debug", true);</code></pre>
+	</div>
 </div>
 
 ## register
 
-<div id="method-register" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.register( <em>options</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>App Object</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.register ( Object definition )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Creates (and returns) a custom application object, within the global BBI namespace.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+        				<td class="name">definition</td>
+    					<td class="type">Object</td>
+        				<td>
+            				<p>The following properties can be passed to the register method:</p>
+            				<ul class="list-group">
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">alias</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							(Required) The name given to your application. Avoid special characters.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">author</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							(Required) First and last name of the author that wrote this customization file
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">client</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							(Optional) SalesForce Account Name for the client that owns this customization file
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">created</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							(Optional) The date this file was created, yyyy/mm/dd
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">requires</h4>
+            						<p>
+            							<span class="text-muted">Type: Array|Object</span><br>
+            							(Optional) Tell the application what assets are required before initializing.
+            							The same assets are entered in the <a href="#require">BBI.require()</a> method, below.
+            							By default, stylesheets will also be loaded for each respective asset (if it exists).
+            							To disable this feature, pass a hash Object for each asset, instead of a single-level array.
+            							You can see an example of this below, under "Examples".
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">assignment_numbers</h4>
+            						<p>
+            							<span class="text-muted">Type: String</span><br>
+            							(Optional) A comma-sparated list of all SalesForce Assignment Numbers associated with this application. The assignent numbers are found on the assignments' detail pages.
+            						</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">changelog</h4>
+            						<p>
+            							<span class="text-muted">Type: Object</span><br>
+            							(Optional) Lists any changes to the custom file, specifying <code>author</code>, <code>date</code>, and <code>notes</code>
+            						</p>
+            					</li>
+            				</ul>
+        				</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Creates (and returns) a custom application object, within the global BBI namespace.</p>
-			<div class="well">
-				<p>
-					<strong>options</strong><br>
-					<span class="text-muted">Type: hash</span>
-				</p>
-				<ul class="list-group">
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>alias</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: string</span><br>
-							The name given to your application. This name must be unique to the webpage.
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>requires</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: array, hash</span><br>
-							Tell the application what assets are required before initializing.
-							The same assets are entered in the <a href="#require">BBI.require()</a> method, below.
-							By default, stylesheets will also be loaded for each respective asset (if it exists).
-							To disable this feature, pass a hash Object for each asset, instead of a single-level array.
-							You can see an example of this below, under "Examples".
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>author</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: string</span><br>
-							First and last name of the author that wrote this customization file
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>client</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: string</span><br>
-							SalesForce Account Name for the client that owns this customization file
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>created</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: string</span><br>
-							The date this file was created, yyyy/mm/dd
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>assignment_numbers</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: string</span><br>
-							A comma-sparated list of all SalesForce Assignment Numbers associated with this application. The assignent numbers are found on the assignments' detail pages.
-						</p>
-					</li>
-					<li class="list-group-item">
-						<h5 class="list-group-item-heading">
-							<code>changelog</code>
-						</h5>
-						<p>
-							<span class="text-muted">Type: hash</span><br>
-							Lists any changes to the custom file, specifying <code>author</code>, <code>date</code>, and <code>notes</code>
-						</p>
-					</li>
-				</ul>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">// Basic usage.
-var app = BBI.register({
+		<h3>Examples</h3>
+        <h4>Basic usage:</h4>
+        <pre><code class="language-javascript">var app = BBI.register({
     alias: "MyApp",
     author: "Jayne Cobb",
     client: "Organization, Inc.",
@@ -890,134 +993,353 @@ var app = BBI.register({
         date: "yyyy/mm/dd",
         notes: ""
     }]
-});
-
-// Require assets.
-var app = BBI.register({
+});</code></pre>
+        <h4>Require certain assets:</h4>
+        <pre><code class="language-javascript">var app = BBI.register({
     alias: "MyApp",
-    requires: ["slideset", "cookie"],
-    author: "Jayne Cobb"
-});
-
-// Require assets, but don't load their stylesheets.
-var app = BBI.register({
+    author: "Jayne Cobb",
+    requires: ["slideset", "cookie"]
+});</code></pre>
+        <h4>Require assets, but don't load their stylesheets:</h4>
+        <pre><code class="language-javascript">var app = BBI.register({
     alias: "MyApp",
+    author: "Jayne Cobb",
     requires: {
     	assets: ["slideset", "cookie"],
     	loadCSS: false
-    },
-    author: "Jayne Cobb"
+    }
 });</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .require()
+## require
 
-<div id="method-require" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.require( <em>assets, callback, loadCSS, jQueryLocation</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>window.jQuery</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.require ( Array assets, Function callback, Boolean includeCSS, String jQueryParent )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>Loads required libraries onto the page, before executing a callback.</p>
+        <p class="alert alert-info"><strong>Asset Dependencies:</strong><br>If you specify any asset, its dependencies will automatically be loaded as well, so you don't need to keep track of which assets are required, and in what order.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+        				<td class="name">assets</td>
+    					<td class="type">Array</td>
+        				<td>
+            				<p>An array of assets' keys. The following keys are acceptable. The source files listed below are located in the <a href="https://github.com/convio/GMBU&#95;Interactive&#95;Services/tree/master/assets" target="_blank">GMBU&#95;Interactive&#95;Services GitHub repository</a>.</p>
+            				<ul class="list-group">
+            				    <li class="list-group-item">
+            						<h4 class="list-group-item-heading">accordion-content</h4>
+            						<p>accordion-content/2.0.0/accordion-content.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bb-twitter-feed</h4>
+            						<p>bb-twitter-feed/jquery.bb-twitter-feed.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-carousel</h4>
+            						<p>bbnc-custom-parts/bbnc-carousel/1.0.0/bbnc-carousel.custom-part.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-carousel-2.0.0</h4>
+            						<p>bbnc-custom-parts/bbnc-carousel/2.0.0/bbnc-carousel.custom-part.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-donation</h4>
+            						<p>bbnc-donation/bbnc-donation.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-localize-parts</h4>
+            						<p>bbnc-localize-parts/bbnc-localize-parts.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-mobile</h4>
+            						<p>bbnc-mobile/bbnc-mobile.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-page-mapper</h4>
+            						<p>bbnc-page-mapper/bbnc-page-mapper.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">bbnc-virtual-tour</h4>
+            						<p>bbnc-virtual-tour/jquery.bbnc-virtual-tour.min.js<br>bbnc-virtual-tour/bbnc-virtual-tour.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">cookie</h4>
+            						<p>cookie/cookie.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">flickr-gallery</h4>
+            						<p>flickr-gallery/flickr-gallery.jquery.min.js<br>flickr-gallery/flickr-gallery.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">font-resizer</h4>
+            						<p>font-resizer/font-resizer.jquery.min.js</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">google-drive-api</h4>
+            						<p>google-drive-api/google-drive-api.jquery.min.js</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">google-maps</h4>
+            						<p>google-maps/google-maps.jquery.min.js</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">handlebars</h4>
+            						<p>handlebars/1.3.0/handlebars.min.js</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">handlebars-helpers</h4>
+            						<p>handlebars-helpers/1.0.0/handlebars-helpers.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">hover-intent</h4>
+            						<p>hover-intent/jquery.hover-intent.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jquery-easing</h4>
+            						<p>jquery-easing/1.3.0/jquery.easing.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jquery-scroll-to</h4>
+            						<p>jquery-scroll-to/jquery.scrollTo.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jquery-tools</h4>
+            						<p>jquery-tools/1.2.5/jquery-tools.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jquery-placeholder</h4>
+            						<p>jquery-placeholder/jquery.placeholder.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jquery-waypoints</h4>
+            						<p>jquery-waypoints/jquery.waypoints.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">jplayer</h4>
+            						<p>jplayer/jquery.jplayer.min.js<br>jplayer/jplayer.blue.monday.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">lawnchair</h4>
+            						<p>lawnchair/lawnchair.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">mega-menu</h4>
+            						<p>mega-menu/1.0.0/mega-menu.jquery.min.js<br>mega-menu/1.0.0/mega-menu.min.css</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">moment</h4>
+            						<p>moment/2.6.0/moment.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">off-canvas-menu</h4>
+            						<p>off-canvas-menu/1.0.0/off-canvas-menu.jquery.min.js<br>off-canvas-menu/1.0.0/off-canvas-menu.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">owl-carousel</h4>
+            						<p>owl-carousel/2.0.0/owl.carousel.min.js<br>owl-carousel/2.0.0/owl.carousel.min.css</p>
+                            	</li>
+                                <li class="list-group-item">
+            						<h4 class="list-group-item-heading">parse-rss</h4>
+            						<p>parse-rss/parse-rss.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">png-fix</h4>
+            						<p>png-fix/png-fix.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">sessvars</h4>
+            						<p>sessvars/1.0.0/sessvars.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">simple-carousel</h4>
+            						<p>simple-carousel/1.0.0/simple-carousel.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">simple-carousel-2.0.0</h4>
+            						<p>simple-carousel/2.0.0/simple-carousel.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">slideset</h4>
+            						<p>slideset/2.0.0/slideset.jquery.min.js<br>slideset/2.0.0/slideset.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">slideset-1.0.0</h4>
+            						<p>slideset/1.0.0/slideset.jquery.min.js<br>slideset/1.0.0/slideset.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">swipebox</h4>
+            						<p>swipebox/swipebox.jquery.min.js<br>swipebox/swipebox.min.css</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">xdomainrequest</h4>
+            						<p>xdomainrequest/1.0.0/jquery.xdomainrequest.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">youtube-gallery</h4>
+            						<p>youtube-gallery/youtube-gallery.jquery.min.js</p>
+                            	</li>
+                            	<li class="list-group-item">
+            						<h4 class="list-group-item-heading">youtube-tv</h4>
+            						<p>youtube-tv/ytv.min.js<br>youtube-tv/ytv.min.css</p>
+                            	</li>
+            				</ul>
+        				</td>
+    				</tr>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>(Optional) The function to execute when the assets are loaded. This function receives a reference to the version of jQuery the assets were appended to (see "jQueryParent", below).</td>
+    				</tr>
+    				<tr>
+    					<td class="name">includeCSS</td>
+    					<td class="type">Boolean</td>
+    					<td>(Optional) By default, a stylesheet will be loaded for each respective asset (if applicable). To disable this feature, set to `false`. Default: true.</td>
+    				</tr>
+    				<tr>
+    					<td class="name">jQueryParent</td>
+    					<td class="type">String</td>
+    					<td>
+    					    <p>(Optional) The name of the object that contains the jQuery version you wish to attach the assets to. Assets loaded via the require method are automatically appended to the version of jQuery being used by BBI.</p>
+            				<ul class="list-group">
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">namespace (default)</h4>
+            						<p>Add the assets to BBI's jQuery.</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">window</h4>
+            						<p>Add the assets to  Window's jQuery.</p>
+            					</li>
+            					<li class="list-group-item">
+            						<h4 class="list-group-item-heading">yahoo</h4>
+            						<p>Add the assets to Luminate's Yahoo jQuery.</p>
+            					</li>
+            				</ul>
+    					</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>Loads required libraries onto the page, before proceeding with a custom method.</p>
-			<p class="alert alert-info"><strong>Asset Dependencies:</strong><br>If you specify any asset its dependencies will automatically be loaded as well, so you don't need to keep track of which assets are required, and in what order.</p>
-			<div class="well">
-				<p>
-					<strong>assets</strong><br>
-					<span class="text-muted">Type: String array</span><br>
-					<a href="../assets/" target="_blank">View possible values &rarr;</a>
-				</p>
-				<p>
-					<strong>callback</strong><br>
-					<span class="text-muted">Type: function</span>
-				</p>
-				<p>
-					<strong>loadCSS</strong><br>
-					<span class="text-muted">Type: boolean</span><br>
-					By default, stylesheets will also be loaded for each respective asset (if it exists).
-					To disable this feature, set this argument to the boolean, false.
-				</p>
-				<p>
-					<strong>jQueryLocation</strong><br>
-					<span class="text-muted">Type: "string"</span><br>
-					<span class="text-muted">Possible Values: "namespace", "window", "yahoo"</span><br>
-					<span class="text-muted">Default: "window"</span><br>
-					This string represents the parent object for a version of jQuery. This is ideal when using noConflict() as it lets you decide to which jQuery object the asset gets appended.
-				</p>
-			</div>
-			<h4>Examples:</h4>
-            <pre class="line-numbers"><code class="language-javascript">// Simple usage:
-BBI.require(['slideset'], function ($) {
+		<h3>Examples</h3>
+        <h4>Basic usage:</h4>
+        <pre><code class="language-javascript">BBI.require(['slideset'], function ($) {
     $('table.slide').SlideSet();
-});
-
-// Complex usage...
-BBI.require(['slideset'], function ($) { // Returns the version of jQuery the plugin is appended to.
-	$('table.slide').SlideSet();
-}, true, "namespace");</code></pre>
-		</div>
+});</code></pre>
+        <h4>Load the assets, but append them to Window's jQuery:</h4>
+        <pre><code class="language-javascript">BBI.require(['slideset'], function (win$) {
+	win$('table.slide').SlideSet();
+}, true, "window");</code></pre>
+        <h4>Load the assets, but append them to Luminate's Yahoo jQuery. Also, don't include the asset's stylesheets!</h4>
+        <pre><code class="language-javascript">BBI.require(['slideset'], function (yahoo$) {
+	yahoo$('table.slide').SlideSet();
+}, false, "yahoo");</code></pre>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>
 
-## .settings()
+## settings
 
-<div id="method-settings" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.settings( <em>key</em>, <em>value</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>various</em></div>
-		</div>
-		<div class="panel-body">
-			<p>Returns BBI's global settings. This method may also return a specific item from the settings array if a key is provided. If the second parameter is specified (value), this will overwrite the existing key's value.</p>
-			<?php echo $bbi_parameters_description; ?>
-			<div class="well">
-				<p>
-					<strong>key</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: string</span>
-				</p>
-				<p>
-					<strong>value</strong> <em>(optional)</em><br>
-					<span class="text-muted">Type: various</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">// Get all settings:
-var bbi_settings = BBI.settings();
-
-// Get one setting:
-var isDebug = BBI.settings("debug");
-
-// Set the value of a setting:
-BBI.settings("debug", true);
-</code></pre>
-		</div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-javascript">BBI.settings ( String key, Various value )</code></h4>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
+	<div class="panel-body">
+		<p>Returns BBI's global settings. This method may also return a specific item from the settings array if a key is provided. If the second parameter is specified (value), this will overwrite the existing key's value.</p>
+		<div class="alert alert-info">
+    		<h4><strong>What's the difference between defaults, options, and settings?</strong></h4>
+    		<div class="table-responsive">
+        		<table class="table table-parameters">
+        		    <tbody>
+        				<tr>
+        					<td class="name">defaults</td>
+        					<td>The defaults set by BBI's extensions.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">options</td>
+        					<td>Custom properties set by the developer.</td>
+        				</tr>
+        				<tr>
+        					<td class="name">settings</td>
+        					<td>The defaults and options merged into a single object.</td>
+        				</tr>
+        			</tbody>
+        		</table>
+    		</div>
+		</div>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">key</td>
+    					<td class="type">String</td>
+    					<td>(Optional) The name of the property to set</td>
+    				</tr>
+    				<tr>
+    					<td class="name">value</td>
+    					<td class="type">Various</td>
+    					<td>(Optional) The value to set</td>
+    				</tr>
+    			</tbody>
+    		</table>
+		</div>
+		<h3>Examples</h3>
+        <h4>Get all settings:</h4>
+        <pre><code class="language-javascript">var settings = BBI.settings();</code></pre>
+        <h4>Get one settings:</h4>
+        <pre><code class="language-javascript">var isDebug = BBI.settings("debug");</code></pre>
+        <h4>Set a settings value:</h4>
+        <pre><code class="language-javascript">BBI.settings("debug", true);</code></pre>
+	</div>
 </div>
 
-## .yield()
+## yield
 
-<div id="method-yield" class="panel-wrapper">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h4 class="panel-title">BBI.yield( <em>function</em> )</h4>
-			<div class="panel-subtitle">Returns: <em>BBI</em></div>
+<div class="panel panel-reference">
+	<div class="panel-heading">
+		<h4 class="panel-title"><code class="language-php">BBI.yield ( Function callback )</code></h4>
+	</div>
+	<div class="panel-body">
+		<p>This method is only available within the Window's <code>bbiAsyncInit</code> function.</p>
+        <p>Essentially, it allows any number of bbiAsyncInit functions to fire on the same page.</p>
+		<h3>Parameters</h3>
+		<div class="table-responsive">
+    		<table class="table table-parameters">
+    		    <thead>
+    		        <tr>
+    		            <th>Name</th>
+    		            <th>Type</th>
+    		            <th>Description</th>
+    		        </tr>
+    		    </thead>
+    		    <tbody>
+    				<tr>
+    					<td class="name">callback</td>
+    					<td class="type">Function</td>
+    					<td>A reference to another bbiAsyncInit function on the page</td>
+    				</tr>
+    			</tbody>
+    		</table>
 		</div>
-		<div class="panel-body">
-			<p>This method is only available within the Window's <code>bbiAsyncInit</code> function.</p>
-			<p>Essentially, it allows any number of bbiAsyncInit functions to fire on the same page.</p>
-			<div class="well">
-				<p>
-					<strong>function</strong><br>
-					<span class="text-muted">Type: function</span>
-				</p>
-			</div>
-			<h4>Examples:</h4>
-			<pre class="line-numbers"><code class="language-javascript">// Store a reference to a previous instance of bbiAsyncInit:
+		<h3>Examples</h3>
+        <pre><code class="language-javascript">// Store a reference to a previous instance of bbiAsyncInit:
 var oldAsyncInit = window.bbiAsyncInit;
 
 // Overwrite bbiAsyncInit with our own version:
@@ -1030,9 +1352,6 @@ window.bbiAsyncInit = function (bbi) {
 	bbi.init({
 		debug: true
 	});
-
 }</code></pre>
-		</div>
 	</div>
-	<p class="back-to-top"><a href="#top">Back to top ^</a></p>
 </div>

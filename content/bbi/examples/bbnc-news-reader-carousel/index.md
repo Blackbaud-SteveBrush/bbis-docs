@@ -5,7 +5,7 @@ name: BBNC News Reader Carousel
 
 # NetCommunity News Reader Carousel
 
-## Dependencies
+Creates a horizontally scrolling carousel of recent news.
 
 ## HTML
 

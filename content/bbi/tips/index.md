@@ -12,17 +12,15 @@ icon: fa fa-sitemap
 
 By default, simply adding the namespace script to the page causes it to auto-initialize. However, it is possible to pass in options to customize your version of BBI.
 
-<a class="btn btn-sm btn-primary" href="//api.blackbaud.com/documentation/methods/index.php#method-init">View a list of all available options for BBI&nbsp;&rarr;</a>
+<a class="btn btn-sm btn-primary" href="/bbi/reference/bbi-methods/#init">View a list of all available options for BBI&nbsp;&rarr;</a>
 
-<pre><code class="language-markup">&lt;!-- Insert before BBI is added to the page: -->
-&lt;script>
-(function (o) {
-	window.bbiAsyncInit = function (bbi) {
-		bbi.yield(o).init({
-			debug: true
-		});
-	}
-})(window.bbiAsyncInit);
+<h4>Insert before BBI is added to the page:</h4>
+<pre><code class="language-markup">&lt;script>
+    window.bbiAsyncInit = function (bbi) {
+    	bbi.init({
+    		debug: true
+    	});
+    });
 &lt;/script></code></pre>
 
 ## Events
@@ -31,8 +29,8 @@ Using jQuery's `$(document).on()` method, you can trigger certain methods during
 
 The arguments provided in the `.on()` method's callback include: the event itself, a reference to BBI, and a reference to jQuery.
 
-<h3>Order of execution</h3>
-<table class="table table-striped">
+<h3>BBI's events (in the order they are executed):</h3>
+<table class="table table-parameters">
 	<thead>
 		<tr>
 			<th>Event name:</th>
@@ -40,48 +38,42 @@ The arguments provided in the `.on()` method's callback include: the event itsel
 		</tr>
 	</thead>
 	<tbody>
-    <tr>
-		<th>bbi-extension-service</th>
-		<td>Fires before the initializer. Allows you to access the defaults and add your own extensions before BBI initializes.</td>
-	</tr>
-	<tr>
-		<th>bbi-ready</th>
-		<td>The namespace has been initialized</td>
-	</tr>
-	<tr>
-		<th>bbi-[alias]-ready</th>
-		<td>A specific app's <code>build()</code> method has been called</td>
-	</tr>
-	<tr>
-		<th>bbi-apps-ready</th>
-		<td>All applications have been loaded</td>
-	</tr>
-	<tr>
-		<th>bbi-apps-loaded</th>
-		<td>All applications' actions have been compiled and global requirements uploaded to the page.</td>
-	</tr>
-	<tr>
-		<th>bbi-[app-alias]-loaded</th>
-		<td>A specific app's actions have been compiled</td>
-	</tr>
-	<!--
-	<tr>
-		<th>bbi-assets-loaded</th>
-		<td>Assets loaded via the <code>require()</code> method have been loaded</td>
-	</tr>
-	-->
-	<tr>
-		<th>bbi-loaded</th>
-		<td>All custom scripts, app assets (requested via the <code>register()</code> method), and apps have been loaded and compiled</td>
-	</tr>
+        <tr>
+    		<td class="name">bbi-extension-service</td>
+    		<td>Fires before the initializer. Allows you to access the defaults and add your own extensions before BBI initializes.</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-ready</td>
+    		<td>The namespace has been initialized</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-[alias]-ready</td>
+    		<td>A specific app's <code>build()</code> method has been called</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-apps-ready</td>
+    		<td>All applications have been loaded</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-apps-loaded</td>
+    		<td>All applications' actions have been compiled and global requirements uploaded to the page.</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-[app-alias]-loaded</td>
+    		<td>A specific app's actions have been compiled</td>
+    	</tr>
+    	<tr>
+    		<td class="name">bbi-loaded</td>
+    		<td>All custom scripts, app assets (requested via the <code>register</code> method), and apps have been loaded and compiled</td>
+    	</tr>
 	</tbody>
 </table>
-<div class="alert alert-info">
-	For example, to execute something after BBI has loaded all required assets, and all apps have been compiled:<br>
-	<pre><code class="language-javascript">jQuery(document).on('bbi-loaded', function (event, bbi, $) {
+
+<h3>For example, do something when BBI is ready, and all of its applications have been built:</h3>
+
+<pre><code class="language-javascript">jQuery(document).on('bbi-loaded', function (event, bbi, $) {
     // Do something once BBI has loaded...
 });</code></pre>
-</div>
 
 ___
 

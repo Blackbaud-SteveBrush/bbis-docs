@@ -2,13 +2,13 @@
 layout: layout-sidebar
 order: 2
 name: Getting Started
-description: Description here.
-icon: fa fa-sitemap
+description: Learn the basics, server dependencies
+icon: fa fa-lightbulb-o
 ---
 
 # Getting Started
 
-<a href="http://api.blackbaud.com/services/wordpress/updater/plugins/blackbaud-assistant.zip" target="_blank" class="btn btn-primary"><i class="fa fa-download"></i> Download blackbaud-assistant.zip</a>
+All of Blackbaud's WordPress plugins require the _Plugin Assistant_. The Plugin Assistant is a WordPress plugin by definition, but it doesn't do much by itself. It simply creates a framework on which the other plugins are built upon. The Plugin Assistant is also responsible for linking each plugin to the auto-update service, among other things.
 
 ## Dependencies
 
@@ -18,18 +18,6 @@ icon: fa fa-sitemap
 
 ## Installing the Plugin Assistant
 
-### Installing via FTP
+The Plugin Assistant is installed like any other WordPress plugin.
 
-1. Download the plugin package (above) and save to your Desktop
-1. Extract the contents of the package and delete the original zip file
-1. Open FileZilla (or any other FTP Client) and login to the server housing your WordPress install
-1. Drag the "blackbaud-assistant" folder from your Desktop into the plugins directory of your WordPress install
-1. Login to the WordPress dashboard and go to the Plugins page. You should see the "Blackbaud: Assistant & Libraries" plugin listed.
-1. Click "Activate" under the plugin's name
-
-### Installing via WordPress dashboard
-
-1. Download the plugin package (above) and save to your Desktop
-1. Login to the WordPress dashboard and go to Plugins > Add New. 
-1. Click the button to upload your zip file into WordPress
-1. After the upload is complete, click "Activate" under the plugin's name
+<a href="/wordpress-plugins/plugins/blackbaud-assistant/" class="btn btn-primary">How to install the Plugin Assistant&nbsp;&rarr;</a>

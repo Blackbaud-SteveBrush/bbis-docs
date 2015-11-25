@@ -391,54 +391,9 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
             						<h4 class="list-group-item-heading">fields</h4>
             						<p>
             							<span class="text-muted">Type: array</span><br>
-            							An array of field arrays, each with the following properties:
-            							<table class="table table-parameters">
-                                		    <thead>
-                                		        <tr>
-                                		            <th>Name</th>
-                                		            <th>Type</th>
-                                		            <th>Description</th>
-                                		        </tr>
-                                		    </thead>
-                                		    <tbody>
-                                		        <tr>
-                                    				<td class="name">slug</td>
-                                					<td class="type">string</td>
-                                    				<td>The unique string to designate the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">label</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's label</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">type</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">default</td>
-                                					<td class="type">string</td>
-                                    				<td>The default value for the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">helplet</td>
-                                					<td class="type">string</td>
-                                    				<td>A short message underneath the field to help the user</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to a field, <br>e.g. `array("maxlength" => "500")`.</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">parent_attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, <br>e.g. `array("class" => "my-parent-div")`.</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
-            						</p>
+            							An array of "field" arrays (see below)
+                                    </p>
+        							
             					</li>
             				</ul>
         				</td>
@@ -446,6 +401,54 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
     			</tbody>
     		</table>
 		</div>
+		<h3>Fields</h3>
+		<p>Form fields are created using PHP arrays with the following properties:</p>
+		<table class="table table-parameters">
+		    <thead>
+		        <tr>
+		            <th>Name</th>
+		            <th>Type</th>
+		            <th>Description</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+    				<td class="name">slug</td>
+					<td class="type">string</td>
+    				<td>The unique string to designate the field</td>
+				</tr>
+				<tr>
+    				<td class="name">label</td>
+					<td class="type">string</td>
+    				<td>The field's label</td>
+				</tr>
+				<tr>
+    				<td class="name">type</td>
+					<td class="type">string</td>
+    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
+				</tr>
+				<tr>
+    				<td class="name">default</td>
+					<td class="type">string</td>
+    				<td>The default value for the field</td>
+				</tr>
+				<tr>
+    				<td class="name">helplet</td>
+					<td class="type">string</td>
+    				<td>A short message underneath the field to help the user</td>
+				</tr>
+				<tr>
+    				<td class="name">attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to a field, e.g. `array("maxlength" => "500")`.</td>
+				</tr>
+				<tr>
+    				<td class="name">parent_attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, e.g. `array("class" => "my-parent-div")`.</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Examples</h3>
         <h4>Create a meta box for a post with one text box:</h4>
         <pre><code class="language-php">$plugin->forge("meta_box", array(
@@ -501,33 +504,8 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
             						<h4 class="list-group-item-heading">columns</h4>
             						<p>
             							<span class="text-muted">Type: array</span><br>
-            							An array of keyed arrays, one for each column. Each array may have the following properties:
-            							<table class="table table-parameters">
-                                		    <thead>
-                                		        <tr>
-                                		            <th>Name</th>
-                                		            <th>Type</th>
-                                		            <th>Description</th>
-                                		        </tr>
-                                		    </thead>
-                                		    <tbody>
-                                		        <tr>
-                                    				<td class="name">label</td>
-                                					<td class="type">string</td>
-                                    				<td>The column's header label</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">value</td>
-                                					<td class="type">function</td>
-                                    				<td>This function should return the content to be displayed in the column. The function argument `$data` is an array that contains the column information, the post_id, and the post object itself.</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">meta_key</td>
-                                					<td class="type">string</td>
-                                    				<td>If you wish to order the column by a post meta key, provide it here.</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
+            							An array of keyed arrays, one for each column (see below).
+            							
             						</p>
             					</li>
             				</ul>
@@ -536,6 +514,34 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
     			</tbody>
     		</table>
 		</div>
+		<h3>Columns</h3>
+		<p>Each "columns" array may have the following properties:</p>
+		<table class="table table-parameters">
+		    <thead>
+		        <tr>
+		            <th>Name</th>
+		            <th>Type</th>
+		            <th>Description</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+    				<td class="name">label</td>
+					<td class="type">string</td>
+    				<td>The column's header label</td>
+				</tr>
+				<tr>
+    				<td class="name">value</td>
+					<td class="type">function</td>
+    				<td>This function should return the content to be displayed in the column. The function argument `$data` is an array that contains the column information, the post_id, and the post object itself.</td>
+				</tr>
+				<tr>
+    				<td class="name">meta_key</td>
+					<td class="type">string</td>
+    				<td>If you wish to order the column by a post meta key, provide it here.</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Examples</h3>
         <h4>Create a sortable column for a custom post type, that displays the post ID:</h4>
         <pre><code class="language-php">$plugin->forge('post&#95;sortable&#95;columns', array(
@@ -629,53 +635,8 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
             						<h4 class="list-group-item-heading">sections</h4>
             						<p>
             							<span class="text-muted">Type: array</span><br>
-            							An array to store sections and their fields. Each field array may have the following properties:
-            							<table class="table table-parameters">
-                                		    <thead>
-                                		        <tr>
-                                		            <th>Name</th>
-                                		            <th>Type</th>
-                                		            <th>Description</th>
-                                		        </tr>
-                                		    </thead>
-                                		    <tbody>
-                                		        <tr>
-                                    				<td class="name">slug</td>
-                                					<td class="type">string</td>
-                                    				<td>The unique string to designate the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">label</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's label</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">type</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">default</td>
-                                					<td class="type">string</td>
-                                    				<td>The default value for the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">helplet</td>
-                                					<td class="type">string</td>
-                                    				<td>A short message underneath the field to help the user</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to a field, <br>e.g. `array("maxlength" => "500")`.</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">parent_attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, <br>e.g. `array("class" => "my-parent-div")`.</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
+            							An array to store sections and their fields (see below).
+            							
             						</p>
             					</li>
             				</ul>
@@ -684,6 +645,54 @@ $my_cpt = $plugin->forge("custom&#95;post&#95;type", function ($plugin, $blackba
     			</tbody>
     		</table>
 		</div>
+		<h3>Sections Fields</h3>
+		<p>Each sections' field arrays may have the following properties:</p>
+		<table class="table table-parameters">
+		    <thead>
+		        <tr>
+		            <th>Name</th>
+		            <th>Type</th>
+		            <th>Description</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+    				<td class="name">slug</td>
+					<td class="type">string</td>
+    				<td>The unique string to designate the field</td>
+				</tr>
+				<tr>
+    				<td class="name">label</td>
+					<td class="type">string</td>
+    				<td>The field's label</td>
+				</tr>
+				<tr>
+    				<td class="name">type</td>
+					<td class="type">string</td>
+    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
+				</tr>
+				<tr>
+    				<td class="name">default</td>
+					<td class="type">string</td>
+    				<td>The default value for the field</td>
+				</tr>
+				<tr>
+    				<td class="name">helplet</td>
+					<td class="type">string</td>
+    				<td>A short message underneath the field to help the user</td>
+				</tr>
+				<tr>
+    				<td class="name">attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to a field, e.g. `array("maxlength" => "500")`.</td>
+				</tr>
+				<tr>
+    				<td class="name">parent_attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, e.g. `array("class" => "my-parent-div")`.</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Examples</h3>
         <h4>A settings page for your custom post type:</h4>
         <pre><code class="language-php">$plugin->forge("settings&#95;page", array(
@@ -836,53 +845,7 @@ $plugin->forge("shortcode", array(
             						<h4 class="list-group-item-heading">fields</h4>
             						<p>
             							<span class="text-muted">Type: array</span><br>
-            							An array to store fields. Each field array may have the following properties:
-            							<table class="table table-parameters">
-                                		    <thead>
-                                		        <tr>
-                                		            <th>Name</th>
-                                		            <th>Type</th>
-                                		            <th>Description</th>
-                                		        </tr>
-                                		    </thead>
-                                		    <tbody>
-                                		        <tr>
-                                    				<td class="name">slug</td>
-                                					<td class="type">string</td>
-                                    				<td>The unique string to designate the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">label</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's label</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">type</td>
-                                					<td class="type">string</td>
-                                    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">default</td>
-                                					<td class="type">string</td>
-                                    				<td>The default value for the field</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">helplet</td>
-                                					<td class="type">string</td>
-                                    				<td>A short message underneath the field to help the user</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to a field, <br>e.g. `array("maxlength" => "500")`.</td>
-                                				</tr>
-                                				<tr>
-                                    				<td class="name">parent_attributes</td>
-                                					<td class="type">array</td>
-                                    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, <br>e.g. `array("class" => "my-parent-div")`.</td>
-                                				</tr>
-                                			</tbody>
-                                		</table>
+            							An array to store fields (see below).
             						</p>
             					</li>
             				</ul>
@@ -891,6 +854,54 @@ $plugin->forge("shortcode", array(
     			</tbody>
     		</table>
 		</div>
+        <h3>Fields</h3>
+		<p>Form fields are created using PHP arrays with the following properties:</p>
+		<table class="table table-parameters">
+		    <thead>
+		        <tr>
+		            <th>Name</th>
+		            <th>Type</th>
+		            <th>Description</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+    				<td class="name">slug</td>
+					<td class="type">string</td>
+    				<td>The unique string to designate the field</td>
+				</tr>
+				<tr>
+    				<td class="name">label</td>
+					<td class="type">string</td>
+    				<td>The field's label</td>
+				</tr>
+				<tr>
+    				<td class="name">type</td>
+					<td class="type">string</td>
+    				<td>The field's type (e.g., "input", "textarea", "checkbox", "media-gallery-picker")</td>
+				</tr>
+				<tr>
+    				<td class="name">default</td>
+					<td class="type">string</td>
+    				<td>The default value for the field</td>
+				</tr>
+				<tr>
+    				<td class="name">helplet</td>
+					<td class="type">string</td>
+    				<td>A short message underneath the field to help the user</td>
+				</tr>
+				<tr>
+    				<td class="name">attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to a field, e.g. `array("maxlength" => "500")`.</td>
+				</tr>
+				<tr>
+    				<td class="name">parent_attributes</td>
+					<td class="type">array</td>
+    				<td>A key-value array to represent any HTML attribute that can be applied to the field's parent DIV, e.g. `array("class" => "my-parent-div")`.</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Examples</h3>
         <h4>Adds two fields to the Category page.</h4>
         <pre><code class="language-php">$plugin->forge("taxonomy_fields", array(

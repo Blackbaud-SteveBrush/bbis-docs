@@ -34,15 +34,15 @@ Name your JavaScript file according to this convention: <code>bbi-[app-alias].js
 ## Register your application
 
 <ol>
-    <li>Open your application JavaScript file in your favorite code editor. You'll notice that the boilerplate is divided into three sections: <code>.register()</code>, <code>.action()</code>, and <code>.build()</code>.</li>
+    <li>Open your application JavaScript file in your favorite code editor. You'll notice that the boilerplate is divided into three sections: <code>register</code>, <code>action</code>, and <code>build</code>.</li>
         <ul>
-            <li>The <a href="/bbi/reference/bbi-methods/#register">**register**</a> method accepts an options object, which creates and returns the application.  The properties "alias" and "author" are required.</li>
-            <li>The <a href="/bbi/reference/app-methods/#action">**action**</a> method lets your application do stuff. You can have any number of actions in your application.</li>
-            <li>The <a href="/bbi/reference/app-methods/#build">**build**</a> method tells BBI that your application is ready to be processed.</li>
+            <li>The <a href="/bbi/reference/bbi-methods/#register">register</a> method accepts an options object, which creates and returns the application.  The properties "alias" and "author" are required.</li>
+            <li>The <a href="/bbi/reference/app-methods/#action">action</a> method lets your application do stuff. You can have any number of actions in your application.</li>
+            <li>The <a href="/bbi/reference/app-methods/#build">build</a> method tells BBI that your application is ready to be processed.</li>
         </ul>
     </li>
-    <li>In the <code>.register()</code> method, modify <code>alias: "MyApp"</code> to represent the name of the organization, without spaces, like this: "CancerResearchSociety".</li>
-    <li>In the <code>.register()</code> method, modify <code>author: "First Last"</code> to match your first and last name, like this: "Jayne Cobb".</li>
+    <li>In the <code>register</code> method, modify <code>alias: "MyApp"</code> to represent the name of the organization, without spaces, like this: "CancerResearchSociety".</li>
+    <li>In the <code>register</code> method, modify <code>author: "First Last"</code> to match your first and last name, like this: "Jayne Cobb".</li>
     <li>Finally, upload your JavaScript file to DropBox (or similar cloud-based server) so you can easily make changes during the development process.</li>
 </ol>
 
@@ -69,7 +69,7 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="step-2-bbnc-bootstrap">
-                        <p>NetCommunity comes pre-installed with jQuery v1.7.2, but Bootstrap requires v.1.9. To use Bootstrap without overwriting NetCommunity's jQuery plugins, you'll need to use jQuery.noConflict().</p>
+                        <p>NetCommunity comes pre-installed with jQuery v1.7.2, but Bootstrap requires v.1.9. To use Bootstrap without overwriting NetCommunity's jQuery plugins, you'll need to use `jQuery.noConflict()`.</p>
                         <pre class="line-numbers"><code class="language-markup">&lt;!-- MY VERSION OF JQUERY -->
 &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">&lt;/script>
 &nbsp;
@@ -80,11 +80,9 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
 &lt;script>
 (function ($) {
     window.bbiAsyncInit = function (bbi) {
-        bbi.yield(o).init({
-            jQuery: $
-        });
+        bbi.init({ jQuery: $ });
     }
-})(window.bbiAsyncInit, jQuery.noConflict(true));
+})(jQuery.noConflict(true));
 &lt;/script>
 &nbsp;
 &lt;!-- BBI NAMESPACE -->
@@ -129,7 +127,7 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
         <ol>
             <li>Accessing your theme files using FTP, open the file "footer.php".</li>
             <li>
-                At the top of the file, include the following code:
+                <p>At the top of the file, include the following code:</p>
                 <pre class="line-numbers"><code class="language-markup">&lt;!-- BBI NAMESPACE -->
 &lt;script>
 (function(a,p,i,s) {
@@ -150,9 +148,9 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
     <div class="tab-pane" id="step-2-pagebuilder">
         <ol>
             <li>PageBuilder pages use an older version of jQuery by default. The BBI Namespace requires at least version 1.7.2, so we'll need to configure BBI to accept a newer version of jQuery, while not overwriting the older version in the process. We can do this via jQuery's <code>noConflict()</code> method.</li>
-            <li>If your PageBuilder page is using a theme, find the Reusable PageBuilder Page named "reus_Teamraiser_javascript" (or something similar). If your PageBuilder does not include a JavaScript reusable, you'll need to create one near the page's footer.</li>
+            <li>If your PageBuilder page is using a theme, find the Reusable PageBuilder Page named "reus&#95;Teamraiser_javascript" (or something similar). If your PageBuilder does not include a JavaScript reusable, you'll need to create one near the page's footer.</li>
             <li>
-                Once you've created (or located) the "JavaScript" Reusable PageBuilder Page, add the following code to the part (before doing so, make sure you are editing the part with the WYSIWYG turned "off"):
+                <p>Once you've created (or located) the "JavaScript" Reusable PageBuilder Page, add the following code to the part (before doing so, make sure you are editing the part with the WYSIWYG turned "off"):</p>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active"><a href="#step-2-pagebuilder-bootstrap" data-toggle="tab">Bootstrap</a></li>
                     <li><a href="#step-2-pagebuilder-vanilla" data-toggle="tab">Default</a></li>
@@ -168,13 +166,11 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
 &nbsp;
 &lt;!-- BBI NAMESPACE INIT -->
 &lt;script>
-(function (o, $) {
+(function ($) {
     window.bbiAsyncInit = function (bbi) {
-        bbi.yield(o).init({
-            jQuery: $
-        });
+        bbi.init({ jQuery: $ });
     }
-})(window.bbiAsyncInit, jQuery.noConflict(true));
+})(jQuery.noConflict(true));
 &lt;/script>
 &nbsp;
 &lt;!-- BBI NAMESPACE -->
@@ -196,13 +192,11 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
 &nbsp;
 &lt;!-- BBI NAMESPACE INIT -->
 &lt;script>
-(function (o, $) {
+(function ($) {
     window.bbiAsyncInit = function (bbi) {
-        bbi.yield(o).init({
-            jQuery: $
-        });
+        bbi.init({ jQuery: $ });
     }
-})(window.bbiAsyncInit, jQuery.noConflict(true));
+})(jQuery.noConflict(true));
 &lt;/script>
 &nbsp;
 &lt;!-- BBI NAMESPACE -->
@@ -230,19 +224,18 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
             <li>Go to your Kintera-thon event's Webinfo Checklist.</li>
             <li>Go to the "Website Design" page editor.</li>
             <li>Look for the textarea labeled "Multi-Language Footer". If you cannot see this textarea, it means that your browser doesn't have a certain cookie set to give you access. You can gain access by clicking on <a href="https://www.kintera.com/kintera_sphere/events/asp/webinfo_enableCustomFeatures.asp" target="_blank">this link</a>.</li>
-            <li>Once you've gained access to edit the "Multi-Language Footer", add the following code to the textarea:
-            <pre class="line-numbers"><code class="language-markup">&lt;!-- My Version of JQuery (anything greater than 1.7.2) -->
+            <li>
+                <p>Once you've gained access to edit the "Multi-Language Footer", add the following code to the textarea:</p>
+                <pre class="line-numbers"><code class="language-markup">&lt;!-- My Version of JQuery (anything greater than 1.7.2) -->
 &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">&lt;/script>
 &nbsp;
 &lt;!-- BBI NAMESPACE INIT -->
 &lt;script>
-(function (o, $) {
+(function ($) {
     window.bbiAsyncInit = function (bbi) {
-        bbi.yield(o).init({
-            jQuery: $
-        });
+        bbi.init({ jQuery: $ });
     }
-})(window.bbiAsyncInit, jQuery.noConflict(true));
+})(jQuery.noConflict(true));
 &lt;/script>
 &nbsp;
 &lt;!-- BBI NAMESPACE -->
@@ -264,3 +257,31 @@ In most situations, adding custom JavaScript to the page is quite simple. Unfort
         </ol>
     </div>
 </div>
+
+## Make your application do something
+
+At this point, your application does little else than print a few status messages in the browser console. To make your application do something, you'll need to add some `actions` to your application's JavaScript file. 
+
+<p>
+    <a href="/bbi/examples/">Check out some example actions&nbsp;&rarr;</a><br>
+    <a href="/bbi/reference/app-methods/#action">Learn more about actions&nbsp;&rarr;</a>
+</p>
+
+## Begin the go-live process
+
+1. Once the Application is working appropriately, upload the Application's JavaScript file to the client's site:
+    - **NetCommunity:** Site Explorer &gt; Files
+    - **WordPress:** Child theme's JavaScript directory
+    - **TeamRaiser:** via FTP
+    - **Friends Asking Friends:** Sphere CMS &gt; Site Content &gt; File Gallery
+1. Be sure to change the value of the `data-bbi-src` attribute to the location of the newly uploaded script (see Step 2). If at all possible, make sure the script source is _local_ and doesn't include the site's domain.
+    - For example, `data-bbi-src="/files/scripts/bbi-houston-humane.js"`
+
+## Submit to Quality Assurance
+
+1. If the project is greater than 8 hours, then you probably have a developer assigned to perform the QA. 
+    - <a href="http://qa.blackbaud.com/?page_id=919" target="_blank">JavaScript QA Form&nbsp;&rarr;</a>
+1. If you don't have QA assigned, please email one of the senior developers to take a second look at your code. (If you're already a senior developer, you're not excluded! Please let another senior developer look at your code.)   
+    - <a href="http://meebee/mysite/_layouts/mycontactlinks.aspx?accountname=blackbaud%5CAndrewFo" target="_blank">Andrew Fort's Team&nbsp;→</a>
+    - <a href="http://meebee/mysite/_layouts/mycontactlinks.aspx?accountname=blackbaud%5CBen%2EWong" target="_blank">Ben Wong's Team&nbsp;→</a>
+1. Once you get the go-ahead from a senior developer, you may then get the client's approval via the Deliverable Acceptance Form.
